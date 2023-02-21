@@ -6,6 +6,7 @@ import { ThemeProvider } from "@mui/material";
 import { Typography, Button } from "@mui/material";
 import { CustomTheme } from "./Theme";
 import Navbar from "./components/Navbar";
+import Login from "./Pages/Login";
 
 function App() {
 	return (
@@ -64,7 +65,11 @@ function App() {
 		// 	</ThemeProvider>
 		// </div>
 		<>
-			<Navbar />
+			<ThemeProvider theme={CustomTheme}>
+				<Navbar />
+				<Login />
+			</ThemeProvider>
+			
 		</>
 	);
 }

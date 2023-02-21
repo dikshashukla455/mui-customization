@@ -8,18 +8,20 @@ import {
 	ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-const pages = ["Products", "Features", "Pricibg", "FAQ"];
+
+const pages = ["Products", "Features", "Pricing", "FAQ"];
 const DrawerComp = () => {
 	const [openDrawer, setOpenDrawer] = useState(false);
 
 	return (
 		<>
 			<Drawer
+			
 				anchor="left"
 				open={openDrawer}
 				onClose={() => setOpenDrawer(false)}
 			>
-				<List>
+				<List sx={{padding:"0 10px"}}>
 					{pages.map((page, index) => (
 						<ListItemButton key={index}>
 							<ListItemIcon>

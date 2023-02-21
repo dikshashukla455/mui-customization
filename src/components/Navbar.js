@@ -5,12 +5,14 @@ import {
 	Tab,
 	Tabs,
 	Toolbar,
-	Typography,
 	useMediaQuery,
 	useTheme,
 } from "@mui/material";
 import LogoImg from "../images/Logo.jpg";
 import DrawerComp from "./Drawer";
+import {ThemeProvider} from "@mui/material";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 const Navbar = () => {
 	const [value, setValue] = useState();
 	const theme = useTheme();
@@ -22,10 +24,10 @@ const Navbar = () => {
 		<>
 			<AppBar
 				sx={{
-					background: "#ffffff",
-					paddingLeft: "100px",
-					paddingRight: "100px",
+					background: "transparent",
+					padding: `${isMatch ? "0" : "0 100px"}`,
 					color: "black",
+					boxShadow:"none"
 				}}
 			>
 				<Toolbar>
@@ -55,17 +57,16 @@ const Navbar = () => {
 									label="Pricing"
 									sx={{ textTransform: "Capitalize", fontWeight: "400" }}
 								/>
-								3.
 								<Tab
 									label="FAQ"
 									sx={{ textTransform: "Capitalize", fontWeight: "400" }}
 								/>
 								<Button
-									color="success"
+									color="primary"
 									variant="contained"
 									sx={{ fontSize: "12px", fontWeight: "400" }}
 								>
-									EN
+									EN<KeyboardArrowDownIcon/>
 								</Button>
 							</Tabs>
 						</>

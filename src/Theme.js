@@ -6,11 +6,11 @@ const orange = "#FDCF24";
 const cacophony = "#B8E716";
 
 export const CustomTheme = createTheme({
-	spacing: 5,
+	spacing: 10,
 	palette: {
 		// testing
 		primary: {
-			main: "#f44336",
+			main: "#34CAA5",
 		},
 		secondary: purple,
 
@@ -24,7 +24,7 @@ export const CustomTheme = createTheme({
 			main: "#3F435C",
 		},
 		interfaceFour: {
-			main: "#F5F5F5",
+			main: "#718096",
 		},
 		White: {
 			main: "#FFFFFF",
@@ -38,9 +38,9 @@ export const CustomTheme = createTheme({
 		success: {
 			main: cacophony,
 		},
-        redGradient:{
-            background: "linear-gradient(95.49deg, #FCAD02 -36.87%, #FF0041 98.63%)",
-        }
+		redGradient: {
+			background: "linear-gradient(95.49deg, #FCAD02 -36.87%, #FF0041 98.63%)",
+		},
 	},
 	typography: {
 		fontFamily: "Poppins",
@@ -91,29 +91,28 @@ export const CustomTheme = createTheme({
 		MuiButton: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-                    borderRadius:"8px",
+					borderRadius: "8px",
 					fontWeight: 400,
 					fontSize: "14px",
 					boxShadow: "none",
-                    textTransform:"capitalize",
+					textTransform: "capitalize",
 					"&.MuiButton-containedPrimary": {
-						backgroundColor: "#673ab7",
+						backgroundColor: "#34CAA5",
+						color: "#ffffff",
+
 						"&:hover": {
-							backgroundColor:"#311b92",
+							backgroundColor: "#00bfa5",
+							boxShadow: "none",
 						},
 					},
 					"&.MuiButton-outlinedPrimary": {
-						backgroundColor: orange,
-						borderColor: red,
-						"&:hover": {
-							color: yellow,
-							backgroundColor: "#f57f17",
-						},
+						backgroundColor: "#ffffff",
+						color: "#111827",
+						border: "1px solid #EEEFF2"
 					},
 					"&.MuiButton-containedInfo": {
-						backgroundColor: "#F3F3F1",
-						borderColor: "#F3F3F1",
-						color: "#636078",
+						backgroundColor: jadeite,
+						color: "#ffffff",
 						"&:hover": {
 							color: "#00022D",
 							backgroundColor: "#F3F3F1",
@@ -121,13 +120,13 @@ export const CustomTheme = createTheme({
 					},
 					"&.MuiButton-outlinedInfo": {
 						backgroundColor: "transparent",
-                        borderWidth:"2px",
+						borderWidth: "2px",
 						borderColor: "#009688",
 						color: "#009688",
 						"&:hover": {
 							color: "#ffffff",
 							backgroundColor: "#009688",
-                            borderColor:"transparent",
+							borderColor: "transparent",
 						},
 					},
 					"&.MuiButton-containedSecondary": {
@@ -136,32 +135,63 @@ export const CustomTheme = createTheme({
 							backgroundColor: "#880e4f",
 						},
 					},
-                    "&.MuiButton-containedSuccess": {
+					"&.MuiButton-containedSuccess": {
 						backgroundColor: "#009688",
 						"&:hover": {
 							backgroundColor: "#004d40",
 						},
 					},
-                    "&.MuiButton-containedWarning": {
+					"&.MuiButton-containedWarning": {
 						backgroundColor: "#ffb300",
-                        color:"#000000",
+						color: "#000000",
 						"&:hover": {
 							backgroundColor: "#ff6f00",
-                            color:"#ffffff",
+							color: "#ffffff",
 						},
 					},
-                    "&.MuiButton-outlinedError": {
+					"&.MuiButton-outlinedError": {
 						backgroundColor: "transparent",
-                        borderWidth:"2px",
+						borderWidth: "2px",
 						borderColor: "#f4511e",
 						color: "#f4511e",
 						"&:hover": {
 							color: "#ffffff",
 							backgroundColor: "#bf360c",
-                            borderColor:"transparent",
+							borderColor: "transparent",
 						},
 					},
-
+				}),
+			},
+		},
+		MuiInput: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					width: "450px",
+					padding:"16px",
+					fontSize:"16px",
+					backgroundColor: "#FAFAFA",
+					color: "#111827",
+					border: "none",
+					outline: "none",
+					borderRadius: "8px",
+					"&:hover": { 
+					border:"none"
+				},
+				"&.Mui-focused":{
+					borderStyle: "solid",
+					borderWidth:"1px",
+					borderColor:jadeite,
+				}
+				
+				}),
+			},
+		},
+		MuiRadio: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					"&.Mui-checked":{
+						// !! didn't work
+					}
 				}),
 			},
 		},
