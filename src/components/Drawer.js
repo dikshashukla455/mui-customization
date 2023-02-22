@@ -16,7 +16,6 @@ const DrawerComp = () => {
 	return (
 		<>
 			<Drawer
-			
 				anchor="left"
 				open={openDrawer}
 				onClose={() => setOpenDrawer(false)}

@@ -39,32 +39,34 @@ const Navbar = () => {
 					) : (
 						<>
 							<Tabs
-								sx={{ marginLeft: "auto" }}
+								sx={{ marginLeft: "auto",color:"#ffffff",  textTransform: "Capitalize", fontWeight: "400",}}
 								indicatorColor="secondary"
 								textColor="inherit"
 								value={value}
 								onChange={(e, value) => setValue(value)}
+								
 							>
 								<Tab
 									label="Products"
-									sx={{ textTransform: "Capitalize", fontWeight: "400" }}
+									sx={{ textTransform: "Capitalize", fontWeight: "400",  fontSize:"18px"}}
+									
 								/>
 								<Tab
 									label="Features"
-									sx={{ textTransform: "Capitalize", fontWeight: "400" }}
+									sx={{ textTransform: "Capitalize", fontWeight: "400",  fontSize:"18px"}}
 								/>
 								<Tab
 									label="Pricing"
-									sx={{ textTransform: "Capitalize", fontWeight: "400" }}
+									sx={{ textTransform: "Capitalize", fontWeight: "400",  fontSize:"18px" }}
 								/>
 								<Tab
 									label="FAQ"
-									sx={{ textTransform: "Capitalize", fontWeight: "400" }}
+									sx={{ textTransform: "Capitalize", fontWeight: "400",  fontSize:"18px" }}
 								/>
 								<Button
 									color="primary"
 									variant="contained"
-									sx={{ fontSize: "12px", fontWeight: "400" }}
+									sx={{ fontSize: "16px", fontWeight: "400" }}
 								>
 									EN<KeyboardArrowDownIcon/>
 								</Button>

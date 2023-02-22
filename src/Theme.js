@@ -43,7 +43,7 @@ export const CustomTheme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: "Poppins",
+		fontFamily: "Urbanist",
 		fontWeightLight: "400",
 		fontWeightRegular: "500",
 		fontWeightMedium: "600",
@@ -166,7 +166,7 @@ export const CustomTheme = createTheme({
 		MuiInput: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					width: "450px",
+					width: "60%",
 					padding:"16px",
 					fontSize:"16px",
 					backgroundColor: "#FAFAFA",

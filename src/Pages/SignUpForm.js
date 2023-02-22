@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import { Typography, TextField, Button } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -10,28 +10,43 @@ import googleImg from "../images/google.svg";
 import appleImg from "../images/apple.svg";
 
 const ariaLabel = { "aria-label": "description" };
-function Login() {
-	return (
-		<div>
-			<div
+
+function SignUpForm() {
+  return (
+    <div>
+        <div
 				style={{
 					display: "flex",
 					justifyContent: "center",
 					alignItems: "center",
 					minHeight: "100vh",
 					flexDirection: "column",
-					marginTop:"40px"
+					marginTop:"60px"
 				}}
 			>
 				<Typography variant="h3" fontWeight="fontWeightBold">
-					Login to your account
+                Create your ZoSale ID
 				</Typography>
 				<br />
+                <div className="" style={{display:"flex",flexDirection:"row"}}>
+                <Input
+					placeholder="First name"
+					inputProps={ariaLabel}
+					disableUnderline={true}
+					sx={{ marginTop: "10px" }}
+				/>&nbsp;&nbsp;&nbsp;
+                <Input
+					placeholder="Last name"
+					inputProps={ariaLabel}
+					disableUnderline={true}
+					sx={{ marginTop: "10px" }}
+				/>
+                </div>
 				<Input
 					placeholder="Email"
 					inputProps={ariaLabel}
 					disableUnderline={true}
-					sx={{ marginTop: "10px" }}
+					sx={{ marginTop: "24px" }}
 				/>
 
 				<Input
@@ -46,8 +61,7 @@ function Login() {
 					style={{
 						display: "flex",
 						alignItems: "center",
-						justifyContent: "space-between",
-						width: "60%",
+						width:"60%",
 						margin: "10px 0 20px 0",
 					}}
 				>
@@ -55,8 +69,7 @@ function Login() {
 						<FormControlLabel
 							value="end"
 							control={<Radio />}
-							label="Remember Me"
-							
+							label="By proceeding, you agree to the"
 						/>
 					</FormControl>
 					<Typography
@@ -64,15 +77,16 @@ function Login() {
 						variant="bodyMedium"
 						fontWeight="fontWeightLight"
 					>
-						Forgot Password?
+						Terms and Conditions
 					</Typography>
 				</div>
 				<Button
 					color="primary"
+                    fontWeight="fontWeightBold"
 					variant="contained"
 					sx={{ width: "60%", padding: "14px 0" }}
 				>
-					Sign in with email
+					Sign up with email
 				</Button>
 				<div
 					className=""
@@ -90,9 +104,9 @@ function Login() {
 					<Typography
 						color="interfaceFour.main"
 						variant="bodyMedium"
-						fontWeight="fontWeightLight"
+						fontWeight="fontWeightRegular"
 					>
-						Or Login with
+						Or Sign up with
 					</Typography>
 					&nbsp;&nbsp;
 					<div
@@ -112,12 +126,12 @@ function Login() {
 					</Button>
 				</div>
 				<div className="" style={{ display: "flex", marginTop:"24px"}}>
-					<Typography variant="bodyMedium" color="interfaceFour.main">Don't have an account?</Typography>
-					&nbsp;<Typography variant="bodyMedium" color="primary.main">Get started</Typography>
+					<Typography variant="bodyMedium" color="interfaceFour.main">Already have an account?</Typography>
+					&nbsp;<Typography variant="bodyMedium" color="primary.main" fontWeight="fontWeightBold"> Sign In</Typography>
 				</div>
 			</div>
-		</div>
-	);
+    </div>
+  )
 }
 
-export default Login;
+export default SignUpForm

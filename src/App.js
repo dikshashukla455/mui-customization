@@ -7,6 +7,8 @@ import { Typography, Button } from "@mui/material";
 import { CustomTheme } from "./Theme";
 import Navbar from "./components/Navbar";
 import Login from "./Pages/Login";
+import Banner from "./components/Banner";
+import SignUp from "./SignUp";
 
 function App() {
 	return (
@@ -67,9 +69,15 @@ function App() {
 		<>
 			<ThemeProvider theme={CustomTheme}>
 				<Navbar />
-				<Login />
+				<div className="homepage">
+					<div className="login">
+						<Login />
+					</div>
+					<div className="banner">
+						<Banner />
+					</div>
+				</div>
 			</ThemeProvider>
-			
 		</>
 	);
 }

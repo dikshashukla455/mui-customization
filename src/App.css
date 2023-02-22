@@ -1,0 +1,32 @@
+body{
+    overflow: hidden;
+}
+.homepage{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-gap:1rem;
+}
+.login{
+    background-color: #fff;
+}
+.banner{
+    background-color: 
+    #04091E;
+}
+.indicator-one,.indicator-two,.indicator-three{
+    margin-top:24px;
+    margin-right: 8px;
+    display: inline-block;
+    width: 8px;
+height: 8px;
+
+/* Others / White */
+border-radius: 50%;
+background: #FFFFFF;
+
+/* Inside auto layout */
+
+}
+.indicator-two,.indicator-three{
+    opacity: 0.5;
+}
