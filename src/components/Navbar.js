@@ -41,14 +41,14 @@ const Navbar = () => {
 							<Tabs
 								sx={{ marginLeft: "auto",color:"#ffffff",  textTransform: "Capitalize", fontWeight: "400",}}
 								indicatorColor="secondary"
-								textColor="inherit"
+								textColor="primary"
 								value={value}
 								onChange={(e, value) => setValue(value)}
 								
 							>
 								<Tab
 									label="Products"
-									sx={{ textTransform: "Capitalize", fontWeight: "400",  fontSize:"18px"}}
+									sx={{ }}
 									
 								/>
 								<Tab

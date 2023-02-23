@@ -99,7 +99,7 @@ export const CustomTheme = createTheme({
 					"&.MuiButton-containedPrimary": {
 						backgroundColor: "#34CAA5",
 						color: "#ffffff",
-
+						cursor: "pointer",
 						"&:hover": {
 							backgroundColor: "#00bfa5",
 							boxShadow: "none",
@@ -108,7 +108,7 @@ export const CustomTheme = createTheme({
 					"&.MuiButton-outlinedPrimary": {
 						backgroundColor: "#ffffff",
 						color: "#111827",
-						border: "1px solid #EEEFF2"
+						border: "1px solid #EEEFF2",
 					},
 					"&.MuiButton-containedInfo": {
 						backgroundColor: jadeite,
@@ -167,31 +167,71 @@ export const CustomTheme = createTheme({
 			styleOverrides: {
 				root: ({ ownerState }) => ({
 					width: "60%",
-					padding:"16px",
-					fontSize:"16px",
+					padding: "16px",
+					fontSize: "16px",
 					backgroundColor: "#FAFAFA",
 					color: "#111827",
 					border: "none",
 					outline: "none",
 					borderRadius: "8px",
-					"&:hover": { 
-					border:"none"
-				},
-				"&.Mui-focused":{
-					borderStyle: "solid",
-					borderWidth:"1px",
-					borderColor:jadeite,
-				}
-				
+					"&:hover": {
+						border: "none",
+					},
+					"&.Mui-focused": {
+						borderStyle: "solid",
+						borderWidth: "1px",
+						borderColor: jadeite,
+					},
 				}),
 			},
+			variants: [
+				{
+					props: { variant: "popInput" },
+					style: {
+						borderRadius: "12px",
+						margin: "32px 24px 0 0",
+						width: "11.5%",
+						padding: "5px 20px",
+						backgroundColor: "#f5f5f5",
+						fontSize: "24px",
+						fontWeight: "bold",
+					},
+				},
+				{
+					props: { variant: "dialogBox" },
+					style: {
+						borderRadius: "84px",
+					},
+				},
+			],
 		},
 		MuiRadio: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					"&.Mui-checked":{
+					"&.Mui-checked": {
 						// !! didn't work
-					}
+					},
+				}),
+			},
+		},
+		MuiTab: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					textTransform: "Capitalize",
+					fontWeight: "400",
+					fontSize: "18px",
+					color: "white",
+				}),
+			},
+		},
+		MuiModal: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					borderRadius: "12px",
+					outline: "none",
+					border: "none",
+					fontWeight: "400",
+					fontSize: "18px",
 				}),
 			},
 		},

@@ -30,3 +30,12 @@ background: #FFFFFF;
 .indicator-two,.indicator-three{
     opacity: 0.5;
 }
+.close-img{
+    text-align: right;
+    margin:25px 38px 0 0;
+    cursor: pointer;
+}
+.logo{
+    margin:6px 0 0 20px;
+
+}

@@ -67,17 +67,18 @@ function App() {
 		// 	</ThemeProvider>
 		// </div>
 		<>
-			<ThemeProvider theme={CustomTheme}>
+			{/* <ThemeProvider theme={CustomTheme}>
 				<Navbar />
 				<div className="homepage">
 					<div className="login">
-						<Login />
+						<SignUp />
 					</div>
 					<div className="banner">
 						<Banner />
 					</div>
 				</div>
-			</ThemeProvider>
+			</ThemeProvider> */}
+			<SignUp />
 		</>
 	);
 }
