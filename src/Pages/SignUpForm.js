@@ -21,6 +21,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseImg from "../images/cross.svg";
 import LogoImg from "../images/Logo.jpg";
+import Checkbox from '@mui/material/Checkbox';
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -51,6 +52,7 @@ function SignUpForm() {
 						inputProps={ariaLabel}
 						disableUnderline={true}
 						sx={{ marginTop: "10px" }}
+						autocomplete="transaction-currency"
 					/>
 					&nbsp;&nbsp;&nbsp;
 					<Input
@@ -86,17 +88,11 @@ function SignUpForm() {
 					<FormControl>
 						<FormControlLabel
 							value="end"
-							control={<Radio />}
+							control={<Checkbox />}
 							label="By proceeding, you agree to the"
 						/>
 					</FormControl>
-					<Typography
-						color="primary"
-						variant="bodyMedium"
-						fontWeight="fontWeightLight"
-					>
-						Terms and Conditions
-					</Typography>
+					
 				</div>
 				<Button
 					color="primary"
