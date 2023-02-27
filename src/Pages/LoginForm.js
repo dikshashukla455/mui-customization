@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Input from "@mui/material/Input";
 import googleImg from "../images/google.svg";
+import { Route, Routes, Link } from "react-router-dom";
 import appleImg from "../images/apple.svg";
 
 const ariaLabel = { "aria-label": "description" };
@@ -114,9 +115,11 @@ function Login() {
 						Don't have an account?
 					</Typography>
 					&nbsp;
+					<Link to="/register" style={{ textDecoration: "none" }}>
 					<Typography variant="bodyMedium" color="primary.main">
 						Get started
 					</Typography>
+					</Link>
 				</Box>
 			</Box>
 		</>

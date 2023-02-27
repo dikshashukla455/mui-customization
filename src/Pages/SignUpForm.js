@@ -23,6 +23,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseImg from "../images/cross.svg";
 import LogoImg from "../images/Logo.jpg";
 import Checkbox from "@mui/material/Checkbox";
+import { Route, Routes, Link } from "react-router-dom";
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -226,7 +227,7 @@ function SignUpForm() {
 						style={{ borderBottom: "1px solid #EEEFF2", width: "155px" }}
 					></div>
 				</div>
-				<div className="" style={{ display: "flex" }}>
+				<Box display={"flex"}>
 					<Button variant="outlined" sx={{ padding: "14px 64px" }}>
 						<img src={googleImg} alt="" color="info" />
 						&nbsp;&nbsp; Google
@@ -236,12 +237,13 @@ function SignUpForm() {
 						<img src={appleImg} alt="" color="info" />
 						&nbsp;&nbsp; Apple
 					</Button>
-				</div>
-				<div className="" style={{ display: "flex", marginTop: "24px" }}>
+				</Box>
+				<Box display={"flex"} marginTop={"24px"}>
 					<Typography variant="bodyMedium" color="interfaceFour.main">
 						Already have an account?
 					</Typography>
 					&nbsp;
+					<Link to="/login" style={{ textDecoration: "none" }}>
 					<Typography
 						variant="bodyMedium"
 						color="primary.main"
@@ -250,7 +252,8 @@ function SignUpForm() {
 						{" "}
 						Sign In
 					</Typography>
-				</div>
+					</Link>
+				</Box>
 			</Box>
 		</div>
 	);
