@@ -4,6 +4,18 @@ import { pink, purple, red, yellow } from "@mui/material/colors";
 const jadeite = "#34CAA5";
 const orange = "#FDCF24";
 const cacophony = "#B8E716";
+const white ="#ffffff";
+const secondary ="#9c27b0";
+const info="#1de9b6";
+const success ="#8bc34a";
+const error ="#f44336"
+const black="#111827";
+const grey="#EEEFF2";
+const primaryHoverColor = "#00bfa5";
+const secondaryHoverColor = "#6a1b9a";
+const infoHoverColor = "#00bfa5";
+const successHoverColor = "#558b2f";
+const errorHoverColor = "#c62828"
 
 export const CustomTheme = createTheme({
 	spacing: 10,
@@ -97,81 +109,123 @@ export const CustomTheme = createTheme({
 					boxShadow: "none",
 					textTransform: "capitalize",
 					"&.MuiButton-containedPrimary": {
-						backgroundColor: "#34CAA5",
-						color: "#ffffff",
+						backgroundColor:jadeite,
+						color:white,
 						cursor: "pointer",
 						"&:hover": {
-							backgroundColor: "#00bfa5",
+							backgroundColor: primaryHoverColor,
 							boxShadow: "none",
 						},
+						
 					},
 					"&.MuiButton-outlinedPrimary": {
-						backgroundColor: "#ffffff",
-						color: "#111827",
-						border: "1px solid #EEEFF2",
-					},
-					"&.MuiButton-containedInfo": {
-						backgroundColor: jadeite,
-						color: "#ffffff",
-						"&:hover": {
-							color: "#00022D",
-							backgroundColor: "#F3F3F1",
-						},
-					},
-					"&.MuiButton-outlinedInfo": {
 						backgroundColor: "transparent",
 						borderWidth: "2px",
-						borderColor: "#009688",
-						color: "#009688",
+						borderColor: grey,
+						color: black,
 						"&:hover": {
-							color: "#ffffff",
-							backgroundColor: "#009688",
+							color: white,
+							backgroundColor: black,
 							borderColor: "transparent",
 						},
 					},
 					"&.MuiButton-containedSecondary": {
-						backgroundColor: "#d81b60",
+						backgroundColor:secondary,
+						color:white,
+						cursor: "pointer",
 						"&:hover": {
-							backgroundColor: "#880e4f",
+							backgroundColor: secondaryHoverColor,
+							boxShadow: "none",
+						},
+						
+					},
+					"&.MuiButton-outlinedSecondary": {
+						backgroundColor: "transparent",
+						borderWidth: "2px",
+						borderColor: secondary,
+						color: secondary,
+						"&:hover": {
+							color: white,
+							backgroundColor: secondary,
+							borderColor: "transparent",
+						},
+					},
+					"&.MuiButton-containedInfo": {
+						backgroundColor:info,
+						color:white,
+						cursor: "pointer",
+						"&:hover": {
+							backgroundColor: infoHoverColor,
+							boxShadow: "none",
+						},
+						
+					},
+					"&.MuiButton-outlinedInfo": {
+						backgroundColor: "transparent",
+						borderWidth: "2px",
+						borderColor: info,
+						color: info,
+						"&:hover": {
+							color: white,
+							backgroundColor: info,
+							borderColor: "transparent",
 						},
 					},
 					"&.MuiButton-containedSuccess": {
-						backgroundColor: "#009688",
+						backgroundColor:success,
+						color:white,
+						cursor: "pointer",
 						"&:hover": {
-							backgroundColor: "#004d40",
+							backgroundColor: successHoverColor,
+							boxShadow: "none",
+						},
+						
+					},
+					"&.MuiButton-outlinedSuccess": {
+						backgroundColor: "transparent",
+						borderWidth: "2px",
+						borderColor: success,
+						color: success,
+						"&:hover": {
+							color: white,
+							backgroundColor: success,
+							borderColor: "transparent",
 						},
 					},
-					"&.MuiButton-containedWarning": {
-						backgroundColor: "#ffb300",
-						color: "#000000",
+					"&.MuiButton-containedError": {
+						backgroundColor:error,
+						color:white,
+						cursor: "pointer",
 						"&:hover": {
-							backgroundColor: "#ff6f00",
-							color: "#ffffff",
+							backgroundColor: errorHoverColor,
+							boxShadow: "none",
 						},
+						
 					},
 					"&.MuiButton-outlinedError": {
 						backgroundColor: "transparent",
 						borderWidth: "2px",
-						borderColor: "#f4511e",
-						color: "#f4511e",
+						borderColor: error,
+						color: error,
 						"&:hover": {
-							color: "#ffffff",
-							backgroundColor: "#bf360c",
+							color: white,
+							backgroundColor: error,
 							borderColor: "transparent",
 						},
 					},
+					
 				}),
 			},
 		},
 		MuiInput: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					width: "60%",
+					width: "100%",
 					padding: "16px",
 					fontSize: "16px",
 					backgroundColor: "#FAFAFA",
 					color: "#111827",
-					border: "none",
+					border: "1px solid transparent",
 					outline: "none",
 					borderRadius: "8px",
 					"&:hover": {

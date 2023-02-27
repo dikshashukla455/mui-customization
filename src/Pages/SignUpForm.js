@@ -5,6 +5,7 @@ import {
 	Button,
 	Modal,
 	fontWeight,
+	Box,
 } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -21,7 +22,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseImg from "../images/cross.svg";
 import LogoImg from "../images/Logo.jpg";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -32,21 +33,23 @@ function SignUpForm() {
 
 	return (
 		<div>
-			<div
-				style={{
+			<Box
+				sx={{
 					display: "flex",
 					justifyContent: "center",
 					alignItems: "center",
-					minHeight: "100vh",
 					flexDirection: "column",
-					marginTop: "60px",
+					height: "100vh",
+					width: "60%",
+					marginTop:"30px",
+					marginX: "auto",
 				}}
 			>
 				<Typography variant="h3" fontWeight="fontWeightBold">
 					Create your ZoSale ID
 				</Typography>
 				<br />
-				<div className="" style={{ display: "flex", flexDirection: "row" }}>
+				<Box display={"flex"} flexDirection={"row"}>
 					<Input
 						placeholder="First name"
 						inputProps={ariaLabel}
@@ -61,7 +64,7 @@ function SignUpForm() {
 						disableUnderline={true}
 						sx={{ marginTop: "10px" }}
 					/>
-				</div>
+				</Box>
 				<Input
 					placeholder="Email"
 					inputProps={ariaLabel}
@@ -76,12 +79,12 @@ function SignUpForm() {
 					type="password"
 					sx={{ marginTop: "24px" }}
 				/>
-				<div
+				<Box
 					className=""
-					style={{
+					sx={{
 						display: "flex",
 						alignItems: "center",
-						width: "60%",
+						width: "100%",
 						margin: "10px 0 20px 0",
 					}}
 				>
@@ -92,14 +95,20 @@ function SignUpForm() {
 							label="By proceeding, you agree to the"
 						/>
 					</FormControl>
-					
-				</div>
+					<Typography
+						color="primary"
+						variant="bodyMedium"
+						fontWeight="fontWeightLight"
+					>
+						Terms and Conditions
+					</Typography>
+				</Box>
 				<Button
 					color="primary"
 					fontWeight="fontWeightBold"
 					variant="contained"
 					onClick={handleOpen}
-					sx={{ width: "60%", padding: "14px 0" }}
+					sx={{ width: "100%", padding: "14px 0" }}
 				>
 					Sign up with email
 				</Button>
@@ -110,83 +119,85 @@ function SignUpForm() {
 					aria-describedby="alert-dialog-description"
 					variant="dialogBox"
 				>
-				<div className="" style={{width:"520px"}}>
-					<div className="close-img" onClick={handleClose}>
-						<img src={CloseImg} alt="" width="12px" />
-					</div>
-					<img src={LogoImg} width="130px" alt="" class="logo" />
+					<div className="" style={{ width: "520px" }}>
+						<div className="close-img" onClick={handleClose}>
+							<img src={CloseImg} alt="" width="12px" />
+						</div>
+						<img src={LogoImg} width="130px" alt="" class="logo" />
 
-					<DialogTitle id="alert-dialog-title">
-						<Typography variant="h5" fontWeight="fontWeightBold">
-							Enter verification code
-						</Typography>
-					</DialogTitle>
-
-					<DialogContent>
-						<DialogContentText id="alert-dialog-description">
-							<Typography color="interfaceTwo.main" variant="bodyMedium">
-								We have just sent a verification code to tynisha*****@mail.com
+						<DialogTitle id="alert-dialog-title">
+							<Typography variant="h5" fontWeight="fontWeightBold">
+								Enter verification code
 							</Typography>
-						</DialogContentText>
-						<Input
-							placeholder=""
-							inputProps={ariaLabel}
-							disableUnderline={true}
-							variant="popInput"
-						/>
-						
-						<Input
-							placeholder=""
-							inputProps={ariaLabel}
-							disableUnderline={true}
-							variant="popInput"
-						/>
-						
-						<Input
-							placeholder=""
-							inputProps={ariaLabel}
-							disableUnderline={true}
-							variant="popInput"
-						/>
-						
-						<Input
-							placeholder=""
-							inputProps={ariaLabel}
-							disableUnderline={true}
-							variant="popInput"
-						/>
-						
-						<Input
-							placeholder=""
-							inputProps={ariaLabel}
-							disableUnderline={true}
-							variant="popInput"
-						/>
-						
-						
-						<Typography
-							variant="body1"
-							color="primary.main"
-							fontWeight="fontWeightBold"
-							style={{display:"block",marginTop:"32px", marginBottom:"10px"}}
-						>
-							{" "}
-							Send the code again
-						</Typography>
-						<br />
-						
-						<Button
-					color="primary"
-					fontWeight="fontWeightBold"
-					variant="contained"
-					fontSize="bodyMedium.fontSize"
-					onClick={handleClose}
-					sx={{ width: "100%", padding: "14px 0", marginBottom:"12px"}}
-				>
-					Verify
-				</Button>
-				
-					</DialogContent>
+						</DialogTitle>
+
+						<DialogContent>
+							<DialogContentText id="alert-dialog-description">
+								<Typography color="interfaceTwo.main" variant="bodyMedium">
+									We have just sent a verification code to tynisha*****@mail.com
+								</Typography>
+							</DialogContentText>
+							<Input
+								placeholder=""
+								inputProps={ariaLabel}
+								disableUnderline={true}
+								variant="popInput"
+							/>
+
+							<Input
+								placeholder=""
+								inputProps={ariaLabel}
+								disableUnderline={true}
+								variant="popInput"
+							/>
+
+							<Input
+								placeholder=""
+								inputProps={ariaLabel}
+								disableUnderline={true}
+								variant="popInput"
+							/>
+
+							<Input
+								placeholder=""
+								inputProps={ariaLabel}
+								disableUnderline={true}
+								variant="popInput"
+							/>
+
+							<Input
+								placeholder=""
+								inputProps={ariaLabel}
+								disableUnderline={true}
+								variant="popInput"
+							/>
+
+							<Typography
+								variant="body1"
+								color="primary.main"
+								fontWeight="fontWeightBold"
+								style={{
+									display: "block",
+									marginTop: "32px",
+									marginBottom: "10px",
+								}}
+							>
+								{" "}
+								Send the code again
+							</Typography>
+							<br />
+
+							<Button
+								color="primary"
+								fontWeight="fontWeightBold"
+								variant="contained"
+								fontSize="bodyMedium.fontSize"
+								onClick={handleClose}
+								sx={{ width: "100%", padding: "14px 0", marginBottom: "12px" }}
+							>
+								Verify
+							</Button>
+						</DialogContent>
 					</div>
 				</Dialog>
 				<div
@@ -240,7 +251,7 @@ function SignUpForm() {
 						Sign In
 					</Typography>
 				</div>
-			</div>
+			</Box>
 		</div>
 	);
 }

@@ -18,6 +18,7 @@ function SignUp() {
 			<Navbar />
 				<div className="homepage">
 					<div className="login">
+					
 					<SignUpForm />
 					</div>
 					<div className="banner">

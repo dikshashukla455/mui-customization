@@ -9,17 +9,18 @@ import {
 	Typography,
 	useMediaQuery,
 	useTheme,
+	Box
 } from "@mui/material";
 
 function Banner() {
 	return (
-		<div>
+		<Box height={"100vh"} display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
 			<img
 				src={BannerImg}
 				alt=""
 				width="500px"
 				height=""
-				style={{ margin: "100px 0 0 110px" }}
+				style={{ marginTop: "30px" }}
 			/>
 			<Typography
 				color="white"
@@ -38,11 +39,11 @@ function Banner() {
 				you find customers, drive sales, and manage your <br /> day-to-day.</center>
 			</Typography>
             <center>
-            <div className="indicator-one"></div>
-            <div className="indicator-two"></div>
-            <div className="indicator-three"></div>
+            <Box className="indicator-one"></Box>
+            <Box className="indicator-two"></Box>
+            <Box className="indicator-three"></Box>
             </center>
-		</div>
+		</Box>
 	);
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, TextField, Button } from "@mui/material";
+import { Typography, TextField, Button, Box } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -12,15 +12,17 @@ import appleImg from "../images/apple.svg";
 const ariaLabel = { "aria-label": "description" };
 function Login() {
 	return (
-		<div>
-			<div
-				style={{
+		<>
+			<Box
+				sx={{
 					display: "flex",
 					justifyContent: "center",
 					alignItems: "center",
-					minHeight: "100vh",
 					flexDirection: "column",
-					marginTop:"40px"
+					height: "100vh",
+					width: "60%",
+					marginTop: "40px",
+					marginX: "auto",
 				}}
 			>
 				<Typography variant="h3" fontWeight="fontWeightBold">
@@ -41,22 +43,18 @@ function Login() {
 					type="password"
 					sx={{ marginTop: "24px" }}
 				/>
-				<div
-					className=""
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "space-between",
-						width: "60%",
-						margin: "10px 0 20px 0",
-					}}
+				<Box
+					display={"flex"}
+					justifyContent={"space-between"}
+					alignItems={"center"}
+					margin={"10px 0 20px 0"}
+					width={"100%"}
 				>
 					<FormControl>
 						<FormControlLabel
 							value="end"
 							control={<Radio />}
 							label="Remember Me"
-							
 						/>
 					</FormControl>
 					<Typography
@@ -66,11 +64,11 @@ function Login() {
 					>
 						Forgot Password?
 					</Typography>
-				</div>
+				</Box>
 				<Button
 					color="primary"
 					variant="contained"
-					sx={{ width: "60%", padding: "14px 0" }}
+					sx={{ padding: "14px 0", width: "100%" }}
 				>
 					Sign in with email
 				</Button>
@@ -95,12 +93,12 @@ function Login() {
 						Or Login with
 					</Typography>
 					&nbsp;&nbsp;
-					<div
+					<Box
 						className=""
 						style={{ borderBottom: "1px solid #EEEFF2", width: "155px" }}
-					></div>
+					></Box>
 				</div>
-				<div className="" style={{ display: "flex" }}>
+				<Box display={"flex"}>
 					<Button variant="outlined" sx={{ padding: "14px 64px" }}>
 						<img src={googleImg} alt="" color="info" />
 						&nbsp;&nbsp; Google
@@ -110,13 +108,18 @@ function Login() {
 						<img src={appleImg} alt="" color="info" />
 						&nbsp;&nbsp; Apple
 					</Button>
-				</div>
-				<div className="" style={{ display: "flex", marginTop:"24px"}}>
-					<Typography variant="bodyMedium" color="interfaceFour.main">Don't have an account?</Typography>
-					&nbsp;<Typography variant="bodyMedium" color="primary.main">Get started</Typography>
-				</div>
-			</div>
-		</div>
+				</Box>
+				<Box display={"flex"} marginTop={"24px"}>
+					<Typography variant="bodyMedium" color="interfaceFour.main">
+						Don't have an account?
+					</Typography>
+					&nbsp;
+					<Typography variant="bodyMedium" color="primary.main">
+						Get started
+					</Typography>
+				</Box>
+			</Box>
+		</>
 	);
 }
 
