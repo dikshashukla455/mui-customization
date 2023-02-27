@@ -19,7 +19,7 @@ function Login() {
 					justifyContent: "center",
 					alignItems: "center",
 					flexDirection: "column",
-					height: "100vh",
+					height: "90vh",
 					width: "60%",
 					marginTop: "40px",
 					marginX: "auto",

@@ -39,9 +39,9 @@ function SignUpForm() {
 					justifyContent: "center",
 					alignItems: "center",
 					flexDirection: "column",
-					height: "100vh",
+					height: "90vh",
 					width: "60%",
-					marginTop:"30px",
+					marginTop:"50px",
 					marginX: "auto",
 				}}
 			>

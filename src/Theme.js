@@ -8,7 +8,7 @@ const white ="#ffffff";
 const secondary ="#9c27b0";
 const info="#1de9b6";
 const success ="#8bc34a";
-const error ="#f44336"
+const error ="#f44336";
 const black="#111827";
 const grey="#EEEFF2";
 const primaryHoverColor = "#00bfa5";
@@ -22,9 +22,14 @@ export const CustomTheme = createTheme({
 	palette: {
 		// testing
 		primary: {
-			main: "#34CAA5",
+			main: jadeite,
 		},
-		secondary: purple,
+		info: {
+			main: info,
+		},
+		success: {
+			main: success,
+		},
 
 		interfaceOne: {
 			main: "#04091E",
@@ -39,17 +44,9 @@ export const CustomTheme = createTheme({
 			main: "#718096",
 		},
 		White: {
-			main: "#FFFFFF",
+			main: white,
 		},
-		info: {
-			main: jadeite,
-		},
-		warning: {
-			main: orange,
-		},
-		success: {
-			main: cacophony,
-		},
+		
 		redGradient: {
 			background: "linear-gradient(95.49deg, #FCAD02 -36.87%, #FF0041 98.63%)",
 		},
@@ -228,9 +225,7 @@ export const CustomTheme = createTheme({
 					border: "1px solid transparent",
 					outline: "none",
 					borderRadius: "8px",
-					"&:hover": {
-						border: "none",
-					},
+					
 					"&.Mui-focused": {
 						borderStyle: "solid",
 						borderWidth: "1px",
@@ -286,6 +281,25 @@ export const CustomTheme = createTheme({
 					border: "none",
 					fontWeight: "400",
 					fontSize: "18px",
+				}),
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					marginTop: "5px",
+					fontSize:"16px",
+					width:"67px",
+					height:"42px",
+					backgroundColor:jadeite,
+					fontWeight: "600",
+					color:white,
+					borderRadius:"8px",
+					
+					"&:hover":{
+						border:"none",
+						outline:"none"
+					}
 				}),
 			},
 		},

@@ -8,7 +8,7 @@ import { CustomTheme } from "./Theme";
 import Navbar from "./components/Navbar";
 import Login from "./Pages/LoginForm";
 import Banner from "./components/Banner";
-import SignUpForm from "./Pages/SignUpForm";
+import LoginForm from "./Pages/LoginForm";
 
 function SignUp() {
 	return (
@@ -17,7 +17,7 @@ function SignUp() {
 				<Navbar />
 				<div className="homepage">
 					<div className="login">
-						<SignUpForm />
+						<LoginForm />
 					</div>
 					<div className="banner">
 						<Banner />
