@@ -311,13 +311,26 @@ export const CustomTheme = createTheme({
 					fontWeight: "600",
 					color:white,
 					borderRadius:"8px",
-					
+					border:"none",
 					"&:hover":{
 						border:"none",
 						outline:"none"
+					},
+					"&:focus":{
+						border:"none",
+						outline:"none"
 					}
+					
+					
 				}),
 			},
 		},
+		MuiFormControlLabel:{
+			styleOverrides:{
+				root: ({ ownerState }) => ({
+					color:"black",
+			})
+			}
+		}
 	},
 });

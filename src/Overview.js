@@ -9,43 +9,65 @@ import {
 	FormControlLabel,
 	MenuItem,
 	Select,
+	Tab,
+	Tabs,
 } from "@mui/material";
+import Input from "@mui/material/Input";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import CloseImg from "./images/cross.svg";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LogoImg from "./images/Logo.jpg";
+
+const ariaLabel = { "aria-label": "description" };
+
 function Overview() {
+	const [value, setValue] = React.useState();
 	const [language, setLanguage] = React.useState("");
+	// adding the functionality of open and close popup modal
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 	const handleChange = (event) => {
 		setLanguage(event.target.value);
 	};
 	return (
 		<div style={{ margin: "2rem 0 0 3rem" }}>
-        <Typography variant="h1">Overview</Typography>
-        <br />
-        <br />
-			<Typography variant="h3">Colors</Typography>
+			<Typography variant="h1">Overview</Typography>
+			<br />
+			<br />
+			{/* ===========================COLORS============================= */}
+			<Typography variant="h3" mb={2}>
+				Colors
+			</Typography>
 			<Typography variant="bodyMedium">
 				The color(text color and background color) can be customizable based on
 				color palette <br /> primary, secondary, info, error, success or using
 				custom variant props.{" "}
 			</Typography>
-			<br />
-
+			<br /> <br />
 			<Typography variant="h5" color="primary">
-				This is primary color
+				This is primary color.
 			</Typography>
 			<Typography variant="h5" color="interfaceThree.main">
-				This is a custom color
+				This is a custom color.
 			</Typography>
 			<Typography variant="h5" color="secondary">
-				This is secondary color
+				This is secondary color.
 			</Typography>
 			<Typography variant="h5" color="info">
-				This is info color
+				This is info color.
 			</Typography>
 			<Typography variant="h5" color="error">
-				This is error color
+				This is error color.
 			</Typography>
 			<br />
-			<Typography variant="h3">Typography</Typography>
+			{/* ===========================TYPOGRAPHY============================= */}
+			<Typography variant="h3" mb={2}>
+				Typography
+			</Typography>
 			<Typography variant="bodyMedium">
 				the typography(size and font weight of the font) and heading can be
 				customizable based on the variant prop having their names <br />
@@ -56,32 +78,47 @@ function Overview() {
 				fontWeightBold, fontWeightMedium
 			</Typography>
 			<br />
-            <br />
-			<Typography variant="h1">This is an h1 heading</Typography>
-			<Typography variant="h2">This is an h2 heading</Typography>
-			<Typography variant="h3">This is an h3 heading</Typography>
-			<Typography variant="h4">This is an h4 heading</Typography>
-			<Typography variant="h5">This is an h5 heading</Typography>
-			<Typography variant="h6">This is an h6 heading</Typography>
-			<Typography variant="bodyLarge" fontWeight="fontWeightLight">
-				This is an large font and light font weight of the text
+			<br />
+			<Typography variant="h1" mb={2}>
+				This is an h1 heading.
+			</Typography>
+			<Typography variant="h2" mb={2}>
+				This is an h2 heading.
+			</Typography>
+			<Typography variant="h3" mb={2}>
+				This is an h3 heading.
+			</Typography>
+			<Typography variant="h4" mb={2}>
+				This is an h4 heading.
+			</Typography>
+			<Typography variant="h5" mb={2}>
+				This is an h5 heading.
+			</Typography>
+			<Typography variant="h6" mb={2}>
+				This is an h6 heading.
+			</Typography>
+			<Typography variant="bodyLarge" mb={2} fontWeight="fontWeightLight">
+				This is an large font and light font weight of the text.
 			</Typography>
 			<br />
-			<Typography variant="bodyMedium" fontWeight="fontWeightMedium">
-				This is an medium font and medium font weight of the text
+			<Typography variant="bodyMedium" mb={2} fontWeight="fontWeightMedium">
+				This is an medium font and medium font weight of the text.
 			</Typography>
 			<br />
 			<Typography variant="bodySmall" fontWeight="fontWeightBold">
-				This is an small font and large font weight of the text
+				This is an small font and large font weight of the text.
 			</Typography>
 			<br />
 			<br />
-			<Typography variant="h3">Buttons</Typography>
+			{/* ===========================BUTTONS============================= */}
+			<Typography variant="h3" mb={2}>
+				Buttons
+			</Typography>
 			<Typography variant="bodyMedium">
 				The buttons can be customizable based on <br />
 				color palette - primary, secondary, info, error, success <br />
 				using variants - contained and outlined. or using style overrides
-				(MuiButton)
+				(MuiButton).
 				<br />
 				<br />
 				<Button
@@ -158,7 +195,10 @@ function Overview() {
 			<br />
 			<br />
 			<br />
-			<Typography variant="h3">Text Fields</Typography>
+			{/* ===========================TEXT FIELDS============================= */}
+			<Typography variant="h3" mb={2}>
+				Text Fields
+			</Typography>
 			<Typography variant="bodyMedium">
 				The input fields can be customizable based on
 				<br /> variants - filled, outlined and standard and using style
@@ -181,12 +221,15 @@ function Overview() {
 			<TextField id="standard-basic" label="Standard" variant="standard" />
 			<br />
 			<br />
-			<Typography variant="h3">Checkbox and Radio buttons</Typography>
+			{/* ===========================CHECKBOX AND RADIO============================= */}
+			<Typography variant="h3" mb={2}>
+				Checkbox and Radio buttons
+			</Typography>
 			<Typography variant="bodyMedium">
 				The checkbox and radio buttons can be customizable(height, width, and
 				color) based on
 				<br /> label prop, value(position) prop and other default props or using
-				style overrides.(MuiRadio and MuiCheckbox)
+				style overrides.(MuiRadio and MuiCheckbox).
 			</Typography>
 			<br />
 			<FormControl>
@@ -195,9 +238,12 @@ function Overview() {
 			<FormControl>
 				<FormControlLabel value="end" control={<Radio />} label="Radio" />
 			</FormControl>
-            <br />
-            <br />
-			<Typography variant="h3">Dropdown down</Typography>
+			<br />
+			<br />
+			{/* ===========================DROPDOWN MENU============================= */}
+			<Typography variant="h3" mb={2}>
+				Dropdown down
+			</Typography>
 			<Typography variant="bodyMedium">
 				The dropdown menu can be customizable based on the changes in menu
 				component and <br /> other default props or using style
@@ -207,7 +253,7 @@ function Overview() {
 			<br />
 			<FormControl>
 				<Select
-					sx={{ "& .MuiSvgIcon-root": { color: "white" }, width:"130px" }}
+					sx={{ "& .MuiSvgIcon-root": { color: "white" }, width: "130px" }}
 					value={language}
 					onChange={handleChange}
 					displayEmpty
@@ -220,6 +266,165 @@ function Overview() {
 					<MenuItem value={30}>Thirty</MenuItem>
 				</Select>
 			</FormControl>
+			{/* ===========================DIALOG BOX============================= */}
+			<Typography variant="h3" mt={3} mb={2}>
+				Dialog box
+			</Typography>
+			<Typography variant="bodyMedium">
+				The Tabs can be customizable based on <br />
+				using custom variants or using style overrides (MuiModal).
+			</Typography>
+			<br />
+			<br />
+			<Button
+				color="secondary"
+				fontWeight="fontWeightBold"
+				variant="contained"
+				onClick={handleOpen}
+				sx={{ width: "30%", padding: "10px 0" }}
+			>
+				Click to see dialog box
+			</Button>
+			{/* ================VERIFICATION MODAL=============== */}
+			<Dialog
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+				variant="dialogBox"
+			>
+				<div className="" style={{ width: "520px" }}>
+					{/* adding the cross image for closing the popup */}
+					<div className="close-img" onClick={handleClose}>
+						<img src={CloseImg} alt="" width="12px" />
+					</div>
+					<img src={LogoImg} width="130px" alt="" class="logo" />
+					{/* verification form */}
+					<DialogTitle id="alert-dialog-title">
+						<Typography variant="h5" fontWeight="fontWeightBold">
+							Enter verification code
+						</Typography>
+					</DialogTitle>
+
+					<DialogContent>
+						<DialogContentText id="alert-dialog-description">
+							<Typography color="interfaceTwo.main" variant="bodyMedium">
+								We have just sent a verification code to tynisha*****@mail.com
+							</Typography>
+						</DialogContentText>
+						{/* verification code input fields */}
+						<Input
+							placeholder=""
+							inputProps={ariaLabel}
+							disableUnderline={true}
+							variant="popInput"
+						/>
+
+						<Input
+							placeholder=""
+							inputProps={ariaLabel}
+							disableUnderline={true}
+							variant="popInput"
+						/>
+
+						<Input
+							placeholder=""
+							inputProps={ariaLabel}
+							disableUnderline={true}
+							variant="popInput"
+						/>
+
+						<Input
+							placeholder=""
+							inputProps={ariaLabel}
+							disableUnderline={true}
+							variant="popInput"
+						/>
+
+						<Input
+							placeholder=""
+							inputProps={ariaLabel}
+							disableUnderline={true}
+							variant="popInput"
+						/>
+
+						<Typography
+							variant="body1"
+							color="primary.main"
+							fontWeight="fontWeightBold"
+							style={{
+								display: "block",
+								marginTop: "32px",
+								marginBottom: "10px",
+							}}
+						>
+							{" "}
+							Send the code again
+						</Typography>
+						<br />
+						{/* verify button */}
+						<Button
+							color="primary"
+							fontWeight="fontWeightBold"
+							variant="contained"
+							fontSize="bodyMedium.fontSize"
+							onClick={handleClose}
+							sx={{ width: "100%", padding: "14px 0", marginBottom: "12px" }}
+						>
+							Verify
+						</Button>
+					</DialogContent>
+				</div>
+			</Dialog>
+			{/* ===========================TABS============================= */}
+			<Typography variant="h3" my={2}>
+				Navbars and Tabs
+			</Typography>
+			<Typography variant="bodyMedium">
+				The Tabs can be customizable based on <br />
+				using custom variants or using style overrides (MuiTab).
+			</Typography>
+			<Tabs
+				sx={{
+					marginLeft: "auto",
+					backgroundColor: "black",
+					textTransform: "Capitalize",
+					fontWeight: "400",
+					width: "50%",
+					marginTop: "20px",
+					marginX: "0",
+				}}
+				indicatorColor="secondary"
+				textColor="primary"
+				value={value}
+				onChange={(e, value) => setValue(value)}
+			>
+				<Tab label="Products" sx={{}} />
+				<Tab
+					label="Features"
+					sx={{
+						textTransform: "Capitalize",
+						fontWeight: "400",
+						fontSize: "18px",
+					}}
+				/>
+				<Tab
+					label="Pricing"
+					sx={{
+						textTransform: "Capitalize",
+						fontWeight: "400",
+						fontSize: "18px",
+					}}
+				/>
+				<Tab
+					label="FAQ"
+					sx={{
+						textTransform: "Capitalize",
+						fontWeight: "400",
+						fontSize: "18px",
+					}}
+				/>
+			</Tabs>
 		</div>
 	);
 }
