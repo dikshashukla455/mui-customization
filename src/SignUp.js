@@ -17,9 +17,11 @@ function SignUp() {
 				<Navbar />
 				<div className="homepage">
 					<div className="login">
+					{/* sign up form */}
 						<SignUpForm />
 					</div>
 					<div className="banner">
+					{/* Banner on right side */}
 						<Banner />
 					</div>
 				</div>

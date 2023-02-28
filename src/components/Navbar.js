@@ -18,13 +18,13 @@ const Navbar = () => {
 	const [value, setValue] = useState();
 	const [language, setLanguage] = useState("");
 	const theme = useTheme();
-	console.log(theme);
-	const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-	console.log(isMatch);
+
+	const isMatch = useMediaQuery(theme.breakpoints.down("md")); // adding some breakpoints for responsiveness
+	// functionality of the dropdown menu
+
 	const handleChange = (event) => {
 		setLanguage(event.target.value);
 	};
-	
 
 	return (
 		<>
@@ -38,12 +38,13 @@ const Navbar = () => {
 			>
 				<Toolbar>
 					<img src={LogoImg} alt="" />
-					{isMatch ? (
+					{isMatch ? ( // if there is a medium or small device then the drawer component will appear as a responsive sidebar
 						<>
 							<DrawerComp />
 						</>
 					) : (
 						<>
+						{/* adding the navbar of the desktop view */}
 							<Tabs
 								sx={{
 									marginLeft: "auto",
@@ -81,16 +82,11 @@ const Navbar = () => {
 										fontSize: "18px",
 									}}
 								/>
-								{/* <Button
-									color="primary"
-									variant="contained"
-									sx={{ fontSize: "16px", fontWeight: "400" }}
-								>
-									EN<KeyboardArrowDownIcon/> 
-								</Button>*/}
+								
+								{/* Language dropdown menu */}
 								<FormControl>
 									<Select
-									sx={{ "& .MuiSvgIcon-root": { color: "white" } }}
+										sx={{ "& .MuiSvgIcon-root": { color: "white" } }}
 										value={language}
 										onChange={handleChange}
 										displayEmpty

@@ -15,6 +15,7 @@ const DrawerComp = () => {
 
 	return (
 		<>
+		{/* adding left side drawer(navbar) for small and medium devices*/}
 			<Drawer
 				anchor="left"
 				open={openDrawer}

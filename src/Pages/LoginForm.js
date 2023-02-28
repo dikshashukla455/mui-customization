@@ -30,13 +30,14 @@ function Login() {
 					Login to your account
 				</Typography>
 				<br />
+				{/* Email field */}
 				<Input
 					placeholder="Email"
 					inputProps={ariaLabel}
 					disableUnderline={true}
 					sx={{ marginTop: "10px" }}
 				/>
-
+				{/* password field */}
 				<Input
 					placeholder="Password"
 					inputProps={ariaLabel}
@@ -51,6 +52,7 @@ function Login() {
 					margin={"10px 0 20px 0"}
 					width={"100%"}
 				>
+					{/* adding radio button for  checking the conditions */}
 					<FormControl>
 						<FormControlLabel
 							value="end"
@@ -66,6 +68,7 @@ function Login() {
 						Forgot Password?
 					</Typography>
 				</Box>
+				{/* Sign in button */}
 				<Button
 					color="primary"
 					variant="contained"
@@ -73,6 +76,7 @@ function Login() {
 				>
 					Sign in with email
 				</Button>
+				{/* other sign in options */}
 				<div
 					className=""
 					style={{
@@ -81,6 +85,8 @@ function Login() {
 						alignItems: "center",
 					}}
 				>
+					{" "}
+					{/* adding borders on left and right hand side */}
 					<div
 						className=""
 						style={{ borderBottom: "1px solid #EEEFF2", width: "155px" }}
@@ -100,6 +106,7 @@ function Login() {
 					></Box>
 				</div>
 				<Box display={"flex"}>
+					{/* other social platform button for signing in */}
 					<Button variant="outlined" sx={{ padding: "14px 64px" }}>
 						<img src={googleImg} alt="" color="info" />
 						&nbsp;&nbsp; Google
@@ -110,15 +117,16 @@ function Login() {
 						&nbsp;&nbsp; Apple
 					</Button>
 				</Box>
+				{/* this is a link which redirects to sign up page by clicking on it */}
 				<Box display={"flex"} marginTop={"24px"}>
 					<Typography variant="bodyMedium" color="interfaceFour.main">
 						Don't have an account?
 					</Typography>
 					&nbsp;
 					<Link to="/register" style={{ textDecoration: "none" }}>
-					<Typography variant="bodyMedium" color="primary.main">
-						Get started
-					</Typography>
+						<Typography variant="bodyMedium" color="primary.main">
+							Get started
+						</Typography>
 					</Link>
 				</Box>
 			</Box>

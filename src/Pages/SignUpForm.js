@@ -28,6 +28,7 @@ import { Route, Routes, Link } from "react-router-dom";
 const ariaLabel = { "aria-label": "description" };
 
 function SignUpForm() {
+	// adding the functionality of open and close popup modal
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
@@ -42,7 +43,7 @@ function SignUpForm() {
 					flexDirection: "column",
 					height: "90vh",
 					width: "60%",
-					marginTop:"50px",
+					marginTop: "50px",
 					marginX: "auto",
 				}}
 			>
@@ -51,6 +52,7 @@ function SignUpForm() {
 				</Typography>
 				<br />
 				<Box display={"flex"} flexDirection={"row"}>
+					{/* First name field */}
 					<Input
 						placeholder="First name"
 						inputProps={ariaLabel}
@@ -59,6 +61,7 @@ function SignUpForm() {
 						autocomplete="transaction-currency"
 					/>
 					&nbsp;&nbsp;&nbsp;
+					{/* last name field */}
 					<Input
 						placeholder="Last name"
 						inputProps={ariaLabel}
@@ -66,13 +69,14 @@ function SignUpForm() {
 						sx={{ marginTop: "10px" }}
 					/>
 				</Box>
+				{/* Email field */}
 				<Input
 					placeholder="Email"
 					inputProps={ariaLabel}
 					disableUnderline={true}
 					sx={{ marginTop: "24px" }}
 				/>
-
+				{/* password field */}
 				<Input
 					placeholder="Password"
 					inputProps={ariaLabel}
@@ -80,6 +84,7 @@ function SignUpForm() {
 					type="password"
 					sx={{ marginTop: "24px" }}
 				/>
+				{/* adding checkbox  for  checking the conditions */}
 				<Box
 					className=""
 					sx={{
@@ -104,6 +109,7 @@ function SignUpForm() {
 						Terms and Conditions
 					</Typography>
 				</Box>
+				{/* Sign up button */}
 				<Button
 					color="primary"
 					fontWeight="fontWeightBold"
@@ -113,6 +119,7 @@ function SignUpForm() {
 				>
 					Sign up with email
 				</Button>
+				{/* ================VERIFICATION MODAL=============== */}
 				<Dialog
 					open={open}
 					onClose={handleClose}
@@ -121,11 +128,12 @@ function SignUpForm() {
 					variant="dialogBox"
 				>
 					<div className="" style={{ width: "520px" }}>
+						{/* adding the cross image for closing the popup */}
 						<div className="close-img" onClick={handleClose}>
 							<img src={CloseImg} alt="" width="12px" />
 						</div>
 						<img src={LogoImg} width="130px" alt="" class="logo" />
-
+						{/* verification form */}
 						<DialogTitle id="alert-dialog-title">
 							<Typography variant="h5" fontWeight="fontWeightBold">
 								Enter verification code
@@ -138,6 +146,7 @@ function SignUpForm() {
 									We have just sent a verification code to tynisha*****@mail.com
 								</Typography>
 							</DialogContentText>
+							{/* verification code input fields */}
 							<Input
 								placeholder=""
 								inputProps={ariaLabel}
@@ -187,7 +196,7 @@ function SignUpForm() {
 								Send the code again
 							</Typography>
 							<br />
-
+							{/* verify button */}
 							<Button
 								color="primary"
 								fontWeight="fontWeightBold"
@@ -201,6 +210,7 @@ function SignUpForm() {
 						</DialogContent>
 					</div>
 				</Dialog>
+				{/* other sign up options */}
 				<div
 					className=""
 					style={{
@@ -209,6 +219,7 @@ function SignUpForm() {
 						alignItems: "center",
 					}}
 				>
+				{/* adding borders on left and right hand side */}
 					<div
 						className=""
 						style={{ borderBottom: "1px solid #EEEFF2", width: "155px" }}
@@ -227,6 +238,7 @@ function SignUpForm() {
 						style={{ borderBottom: "1px solid #EEEFF2", width: "155px" }}
 					></div>
 				</div>
+				{/* other social platform button for signing up */}
 				<Box display={"flex"}>
 					<Button variant="outlined" sx={{ padding: "14px 64px" }}>
 						<img src={googleImg} alt="" color="info" />
@@ -238,20 +250,21 @@ function SignUpForm() {
 						&nbsp;&nbsp; Apple
 					</Button>
 				</Box>
+				{/* this is a link which redirects to login page by clicking on it */}
 				<Box display={"flex"} marginTop={"24px"}>
 					<Typography variant="bodyMedium" color="interfaceFour.main">
 						Already have an account?
 					</Typography>
 					&nbsp;
 					<Link to="/login" style={{ textDecoration: "none" }}>
-					<Typography
-						variant="bodyMedium"
-						color="primary.main"
-						fontWeight="fontWeightBold"
-					>
-						{" "}
-						Sign In
-					</Typography>
+						<Typography
+							variant="bodyMedium"
+							color="primary.main"
+							fontWeight="fontWeightBold"
+						>
+							{" "}
+							Sign In
+						</Typography>
 					</Link>
 				</Box>
 			</Box>

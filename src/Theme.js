@@ -1,6 +1,8 @@
 import { createTheme } from "@mui/material";
 import { pink, purple, red, yellow } from "@mui/material/colors";
 
+// initializing colors to the variables
+
 const jadeite = "#34CAA5";
 const orange = "#FDCF24";
 const cacophony = "#B8E716";
@@ -19,6 +21,7 @@ const errorHoverColor = "#c62828"
 
 export const CustomTheme = createTheme({
 	spacing: 10,
+	// colors palette
 	palette: {
 		// testing
 		primary: {
@@ -51,6 +54,7 @@ export const CustomTheme = createTheme({
 			background: "linear-gradient(95.49deg, #FCAD02 -36.87%, #FF0041 98.63%)",
 		},
 	},
+	// typography (font size and weight) and headings
 	typography: {
 		fontFamily: "Urbanist",
 		fontWeightLight: "400",
@@ -96,6 +100,7 @@ export const CustomTheme = createTheme({
 			fontSize: "14px",
 		},
 	},
+	// Styling button components
 	components: {
 		MuiButton: {
 			styleOverrides: {
@@ -105,6 +110,7 @@ export const CustomTheme = createTheme({
 					fontSize: "14px",
 					boxShadow: "none",
 					textTransform: "capitalize",
+					// primary color - contained and outlined
 					"&.MuiButton-containedPrimary": {
 						backgroundColor:jadeite,
 						color:white,
@@ -126,6 +132,7 @@ export const CustomTheme = createTheme({
 							borderColor: "transparent",
 						},
 					},
+					// secondary color - contained and outlined
 					"&.MuiButton-containedSecondary": {
 						backgroundColor:secondary,
 						color:white,
@@ -147,6 +154,7 @@ export const CustomTheme = createTheme({
 							borderColor: "transparent",
 						},
 					},
+					// info color - contained and outlined
 					"&.MuiButton-containedInfo": {
 						backgroundColor:info,
 						color:white,
@@ -168,6 +176,7 @@ export const CustomTheme = createTheme({
 							borderColor: "transparent",
 						},
 					},
+					// success color - contained and outlined
 					"&.MuiButton-containedSuccess": {
 						backgroundColor:success,
 						color:white,
@@ -189,6 +198,7 @@ export const CustomTheme = createTheme({
 							borderColor: "transparent",
 						},
 					},
+					// error color - contained and outlined
 					"&.MuiButton-containedError": {
 						backgroundColor:error,
 						color:white,
@@ -214,6 +224,7 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// Styling input components
 		MuiInput: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
@@ -225,7 +236,7 @@ export const CustomTheme = createTheme({
 					border: "1px solid transparent",
 					outline: "none",
 					borderRadius: "8px",
-					
+					// adding the styles on focused input
 					"&.Mui-focused": {
 						borderStyle: "solid",
 						borderWidth: "1px",
@@ -233,6 +244,7 @@ export const CustomTheme = createTheme({
 					},
 				}),
 			},
+			// adding the some custom input variants for the verification modal
 			variants: [
 				{
 					props: { variant: "popInput" },
@@ -254,15 +266,17 @@ export const CustomTheme = createTheme({
 				},
 			],
 		},
+		// Styling radio components
 		MuiRadio: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
 					"&.Mui-checked": {
-						// !! didn't work
+						// add styles here
 					},
 				}),
 			},
 		},
+		// Styling Tab components
 		MuiTab: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
@@ -273,6 +287,7 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// styling the modal components
 		MuiModal: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
@@ -284,6 +299,7 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// Styling the drop down menu components
 		MuiSelect: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({

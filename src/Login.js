@@ -16,9 +16,11 @@ function SignUp() {
 			<ThemeProvider theme={CustomTheme}>
 				<Navbar />
 				<div className="homepage">
+				{/* Login page */}
 					<div className="login">
 						<LoginForm />
 					</div>
+					{/* Banner on right side */}
 					<div className="banner">
 						<Banner />
 					</div>

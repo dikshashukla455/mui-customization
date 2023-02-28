@@ -15,6 +15,7 @@ import {
 function Banner() {
 	return (
 		<Box height={"100vh"} display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"}>
+{/* banner image */}
 			<img
 				src={BannerImg}
 				alt=""
@@ -22,6 +23,7 @@ function Banner() {
 				height=""
 				style={{ marginTop: "30px" }}
 			/>
+			{/* banner content */}
 			<Typography
 				color="white"
 				variant="h2"
@@ -39,6 +41,7 @@ function Banner() {
 				you find customers, drive sales, and manage your <br /> day-to-day.</center>
 			</Typography>
             <center>
+			{/* indicators of carousel banner */}
             <Box className="indicator-one"></Box>
             <Box className="indicator-two"></Box>
             <Box className="indicator-three"></Box>
