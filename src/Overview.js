@@ -20,6 +20,15 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseImg from "./images/cross.svg";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LogoImg from "./images/Logo.jpg";
+import colorImg from "./images/color.png";
+import typoImg from "./images/typo.png";
+import buttonImg from "./images/button.png";
+import fieldImg from "./images/field.png";
+import inputbtnImg from "./images/inputBtn.png";
+import dropdownImg from "./images/dropdown.png";
+import dialogImg from "./images/dialog.png";
+import tabImg from "./images/tab.png";
+
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -47,6 +56,8 @@ function Overview() {
 				color palette <br /> primary, secondary, info, error, success or using
 				custom variant props.{" "}
 			</Typography>
+			<br /> <br />
+			<img src={colorImg} width="600px" alt="" />
 			<br /> <br />
 			<Typography variant="h5" color="primary">
 				This is primary color.
@@ -77,8 +88,9 @@ function Overview() {
 				font weight of text - fontWeightRegular, fontWeigthLight,
 				fontWeightBold, fontWeightMedium
 			</Typography>
-			<br />
-			<br />
+			<br /> <br />
+			<img src={typoImg} width="600px" alt="" />
+			<br /> <br />
 			<Typography variant="h1" mb={2}>
 				This is an h1 heading.
 			</Typography>
@@ -119,8 +131,9 @@ function Overview() {
 				color palette - primary, secondary, info, error, success <br />
 				using variants - contained and outlined. or using style overrides
 				(MuiButton).
-				<br />
-				<br />
+				<br /> <br />
+			<img src={buttonImg} width="700px" alt="" />
+			<br /> <br />
 				<Button
 					color="primary"
 					variant="contained"
@@ -204,8 +217,9 @@ function Overview() {
 				<br /> variants - filled, outlined and standard and using style
 				overrides(MuiInput) for the custom variants .
 			</Typography>
-			<br />
-			<br />
+			<br /> <br />
+			<img src={fieldImg} width="600px" alt="" />
+			<br /> <br />
 			<TextField
 				id="outlined-basic"
 				label="Outlined"
@@ -231,7 +245,9 @@ function Overview() {
 				<br /> label prop, value(position) prop and other default props or using
 				style overrides.(MuiRadio and MuiCheckbox).
 			</Typography>
-			<br />
+			<br /> <br />
+			<img src={inputbtnImg} width="600px" alt="" />
+			<br /> <br />
 			<FormControl>
 				<FormControlLabel value="end" control={<Checkbox />} label="Checkbox" />
 			</FormControl>
@@ -249,8 +265,9 @@ function Overview() {
 				component and <br /> other default props or using style
 				overrides.(MuiSelect)
 			</Typography>
-			<br />
-			<br />
+			<br /> <br />
+			<img src={dropdownImg} width="600px" alt="" />
+			<br /> <br />
 			<FormControl>
 				<Select
 					sx={{ "& .MuiSvgIcon-root": { color: "white" }, width: "130px" }}
@@ -274,8 +291,9 @@ function Overview() {
 				The Tabs can be customizable based on <br />
 				using custom variants or using style overrides (MuiModal).
 			</Typography>
-			<br />
-			<br />
+			<br /> <br />
+			<img src={dialogImg} width="600px" alt="" />
+			<br /> <br />
 			<Button
 				color="secondary"
 				fontWeight="fontWeightBold"
@@ -384,6 +402,9 @@ function Overview() {
 				The Tabs can be customizable based on <br />
 				using custom variants or using style overrides (MuiTab).
 			</Typography>
+			<br /> <br />
+			<img src={tabImg} width="600px" alt="" />
+			<br /> <br />
 			<Tabs
 				sx={{
 					marginLeft: "auto",
