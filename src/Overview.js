@@ -29,7 +29,6 @@ import dropdownImg from "./images/dropdown.png";
 import dialogImg from "./images/dialog.png";
 import tabImg from "./images/tab.png";
 
-
 const ariaLabel = { "aria-label": "description" };
 
 function Overview() {
@@ -52,9 +51,18 @@ function Overview() {
 				Colors
 			</Typography>
 			<Typography variant="bodyMedium">
-				The color(text color and background color) can be customizable based on
-				color palette <br /> primary, secondary, info, error, success or using
-				custom variant props.{" "}
+				The color(text color and background color) can be customizable based on{" "}
+				<br />
+				<br />
+				using color palette -
+				<ul>
+					<li>primary</li>
+					<li>secondary</li>
+					<li>info</li>
+					<li>error</li>
+					<li>success</li>
+				</ul>{" "}
+				or using custom variant props.{" "}
 			</Typography>
 			<br /> <br />
 			<img src={colorImg} width="600px" alt="" />
@@ -82,11 +90,29 @@ function Overview() {
 			<Typography variant="bodyMedium">
 				the typography(size and font weight of the font) and heading can be
 				customizable based on the variant prop having their names <br />
-				headings - h1, h2, h3, h4, h5 ,h6 <br />
-				size of text - bodyLarge, bodyMedium and bodySmall
 				<br />
-				font weight of text - fontWeightRegular, fontWeigthLight,
-				fontWeightBold, fontWeightMedium
+				headings -
+				<ul>
+					<li>h1</li>
+					<li>h2</li>
+					<li>h3</li>
+					<li>h4</li>
+					<li>h5</li>
+					<li>h6</li>
+				</ul>
+				size of text -
+				<ul>
+					<li>bodyLarge</li>
+					<li>bodyMedium</li>
+					<li>body1</li>
+				</ul>
+				font weight of text -
+				<ul>
+					<li>fontWeightLight</li>
+					<li>fontWeightRegular</li>
+					<li>fontWeightMedium</li>
+					<li>fontWeightBold</li>
+				</ul>
 			</Typography>
 			<br /> <br />
 			<img src={typoImg} width="600px" alt="" />
@@ -109,13 +135,15 @@ function Overview() {
 			<Typography variant="h6" mb={2}>
 				This is an h6 heading.
 			</Typography>
-			<Typography variant="bodyLarge" mb={2} fontWeight="fontWeightLight">
+			<Typography variant="bodyLarge" fontWeight="fontWeightLight">
 				This is an large font and light font weight of the text.
 			</Typography>
 			<br />
-			<Typography variant="bodyMedium" mb={2} fontWeight="fontWeightMedium">
+			<br />
+			<Typography variant="bodyMedium" fontWeight="fontWeightMedium">
 				This is an medium font and medium font weight of the text.
 			</Typography>
+			<br />
 			<br />
 			<Typography variant="bodySmall" fontWeight="fontWeightBold">
 				This is an small font and large font weight of the text.
@@ -127,13 +155,25 @@ function Overview() {
 				Buttons
 			</Typography>
 			<Typography variant="bodyMedium">
-				The buttons can be customizable based on <br />
-				color palette - primary, secondary, info, error, success <br />
-				using variants - contained and outlined. or using style overrides
+				The buttons can be customizable based on using style overrides or <br />
+				<br />
+				using color palette -
+				<ul>
+					<li>primary</li>
+					<li>secondary</li>
+					<li>info</li>
+					<li>error</li>
+					<li>success</li>
+				</ul>
+				using variants -
+				<ul>
+					<li>Contained</li>
+					<li>Outlined</li>
+				</ul>
 				(MuiButton).
 				<br /> <br />
-			<img src={buttonImg} width="700px" alt="" />
-			<br /> <br />
+				<img src={buttonImg} width="700px" alt="" />
+				<br /> <br />
 				<Button
 					color="primary"
 					variant="contained"
@@ -214,8 +254,13 @@ function Overview() {
 			</Typography>
 			<Typography variant="bodyMedium">
 				The input fields can be customizable based on
-				<br /> variants - filled, outlined and standard and using style
-				overrides(MuiInput) for the custom variants .
+				<br /> <br /> using variants -{" "}
+				<ul>
+					<li>Filled</li>
+					<li>Outlined</li>
+					<li>Standard</li>
+				</ul>{" "}
+				or using style overrides(MuiInput) for the custom variants .
 			</Typography>
 			<br /> <br />
 			<img src={fieldImg} width="600px" alt="" />
