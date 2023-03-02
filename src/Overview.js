@@ -7,6 +7,7 @@ import {
 	Radio,
 	FormControl,
 	FormControlLabel,
+	FormGroup,
 	MenuItem,
 	Select,
 	Tab,
@@ -20,6 +21,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseImg from "./images/cross.svg";
 import Tooltip from "@mui/material/Tooltip";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Switch from '@mui/material/Switch';
 import LogoImg from "./images/Logo.jpg";
 import colorImg from "./images/color.png";
 import typoImg from "./images/typo.png";
@@ -29,6 +34,8 @@ import inputbtnImg from "./images/inputBtn.png";
 import dropdownImg from "./images/dropdown.png";
 import dialogImg from "./images/dialog.png";
 import tooltipImg from "./images/tooltip.png";
+import accordionImg from "./images/carbon (2).png";
+import switchImg from "./images/carbon (3).png";
 import tabImg from "./images/tab.png";
 
 const ariaLabel = { "aria-label": "description" };
@@ -43,6 +50,7 @@ function Overview() {
 	const handleChange = (event) => {
 		setLanguage(event.target.value);
 	};
+
 	return (
 		<div style={{ margin: "2rem 0 0 3rem" }}>
 			<Typography variant="h1">Overview</Typography>
@@ -493,6 +501,7 @@ function Overview() {
 					}}
 				/>
 			</Tabs>
+			{/* ===========================TOOLTIPS============================= */}
 			<Typography variant="h3" my={2}>
 				Tooltips
 			</Typography>
@@ -546,6 +555,90 @@ function Overview() {
 					top-right tooltip
 				</Button>
 			</Tooltip>
+			<br />
+			{/* ===========================ACCORDION============================= */}
+			<Typography variant="h3" mb={2} mt={3}>
+				Accordion
+			</Typography>
+			<Typography variant="bodyMedium">
+				The accordion can be customizable based on
+				<br /> using style overrides(MuiAccordion) for the custom variants.
+				<br /> There is a disabled attribute to disable the part of the accordion.
+			</Typography>
+			<br /> <br />
+			<img src={accordionImg} width="600px" alt="" />
+			<br /> <br />
+			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "white" } }}>
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon />}
+					aria-controls="panel1a-content"
+					id="panel1a-header"
+				>
+					<Typography>Accordion 1</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+						malesuada lacus ex, sit amet blandit leo lobortis eget.
+					</Typography>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "white" } }}>
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon />}
+					aria-controls="panel2a-content"
+					id="panel2a-header"
+				>
+					<Typography>Accordion 2</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+						malesuada lacus ex, sit amet blandit leo lobortis eget.
+					</Typography>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "white" } }}>
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon />}
+					aria-controls="panel2a-content"
+					id="panel2a-header"
+				>
+					<Typography>Accordion 3</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Typography>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+						malesuada lacus ex, sit amet blandit leo lobortis eget.
+					</Typography>
+				</AccordionDetails>
+			</Accordion>
+			{/* ===========================switch============================= */}
+			<Typography variant="h3" mb={2} mt={3}>
+			Switch
+			</Typography>
+			<Typography variant="bodyMedium">
+			The switch can be customizable based on
+			<br />
+			<br />
+				using color palette (to change the color) -
+				<ul>
+					<li>primary</li>
+					<li>secondary</li>
+					<li>info</li>
+					<li>error</li>
+					<li>success</li>
+				</ul>
+				using style overrides(MuiSwitch) for the custom variants. <br />
+				<br /> There is a disabled attribute to disable the switch.
+			</Typography>
+			<br /> <br />
+			<img src={switchImg} width="600px" alt="" />
+			<br /> <br />
+			<FormGroup>
+				<FormControlLabel control={<Switch defaultChecked />} label="Label" />
+				<FormControlLabel disabled control={<Switch />} label="Disabled" />
+			</FormGroup>
 		</div>
 	);
 }
