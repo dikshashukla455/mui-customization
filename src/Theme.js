@@ -123,11 +123,11 @@ export const CustomTheme = createTheme({
 					"&.MuiButton-outlinedPrimary": {
 						backgroundColor: "transparent",
 						borderWidth: "2px",
-						borderColor: grey,
-						color: black,
+						borderColor: jadeite,
+						color: jadeite,
 						"&:hover": {
 							color: white,
-							backgroundColor: black,
+							backgroundColor: jadeite,
 							borderColor: "transparent",
 						},
 					},
@@ -215,6 +215,17 @@ export const CustomTheme = createTheme({
 							borderColor: "transparent",
 						},
 					},
+					"&.MuiButton-outlinedInherit" : {
+						backgroundColor: "transparent",
+						borderWidth: "2px",
+						borderColor: "#111827",
+						color: "#111827",
+						"&:hover": {
+							color: white,
+							backgroundColor: "#111827",
+							borderColor: "transparent",
+						},
+					},
 				}),
 			},
 		},
@@ -236,6 +247,16 @@ export const CustomTheme = createTheme({
 						borderWidth: "1px",
 						borderColor: jadeite,
 					},
+					"&:hover":{
+						border:`1px solid ${jadeite}`,
+					},
+					"&:after":{
+						borderBottom:"none",
+					},
+					"&:before":{
+						borderBottom:"none",
+					},
+					
 				}),
 			},
 			// adding the some custom input variants for the verification modal
@@ -258,6 +279,19 @@ export const CustomTheme = createTheme({
 						borderRadius: "84px",
 					},
 				},
+				{
+					props: { variant: "filled" },
+					style: {
+					padding: "16px",
+					fontSize: "16px",
+					backgroundColor: "#FAFAFA",
+					color: "#111827",
+					border: "1px solid transparent",
+					outline: "none",
+					borderRadius: "8px",
+					display:"inline-block"
+					},
+				},
 			],
 		},
 		// Styling radio components
@@ -270,6 +304,7 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+
 		// Styling Tab components
 		MuiTab: {
 			styleOverrides: {
@@ -280,6 +315,15 @@ export const CustomTheme = createTheme({
 					color: "white",
 				}),
 			},
+			variants: [
+				{
+					props: { variant: "overviewTab" },
+					style: {
+						color: "black",
+						fontSize: "14px",
+					},
+				},
+			],
 		},
 		// styling the modal components
 		MuiModal: {
@@ -331,26 +375,70 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					backgroundColor: "white",
+					border: "none",
+					textDecoration: "none",
+					padding:"5px 0",
+					borderRadius:"8px",
+					"&:placeholder": {
+						color: "#A0AEC0",
+					},
+					"&:hover": {
+						border:`1px solid ${jadeite}`,
+					}
+				}),
+			},
+		},
+		MuiFilledInput: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					backgroundColor: "#fafafa",
+					borderBottom: "none",
+					textDecoration: "none",
+					paddingBottom: "10px",
+					borderRadius: "8px",
+				"&:before":{
+					borderBottom:"none"
+
+				},
+				"&:focus":{
+					border:`1px solid ${jadeite}`,
+				},
+				"&:hover":{
+					border:`1px solid ${jadeite}`,
+				},
+				"&:after":{
+					border:"none"
+				}
+				}),
+			},
+		},
 		MuiAccordion: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
 					width: "600px",
-					backgroundColor: "black",
-					color: white,
-					border: "1px solid white",
+					backgroundColor: "white",
+					color: black,
+					border: "1px solid grey",
+					borderbottom:"grey",
+					borderRadius:"5px",
 					"&.Mui-expanded": {
-						backgroundColor: success,
+						border:`2px solid ${jadeite}`,
+					
 					},
 					"&.Mui-disabled": {
 						backgroundColor: grey,
 					},
+					
 				}),
 			},
 		},
 		MuiSwitch: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					
 					"&.Mui-disabled": {
 						backgroundColor: grey,
 					},

@@ -240,13 +240,13 @@ function SignUpForm() {
 				</div>
 				{/* other social platform button for signing up */}
 				<Box display={"flex"}>
-					<Button variant="outlined" sx={{ padding: "14px 64px" }}>
-						<img src={googleImg} alt="" color="info" />
+					<Button variant="outlined" sx={{ padding: "14px 64px" }} color="inherit">
+						<img src={googleImg} alt="" />
 						&nbsp;&nbsp; Google
 					</Button>
 					&nbsp;&nbsp; &nbsp;
-					<Button variant="outlined" sx={{ padding: "14px 64px" }}>
-						<img src={appleImg} alt="" color="info" />
+					<Button variant="outlined" sx={{ padding: "14px 64px" }} color="inherit">
+						<img src={appleImg} alt=""/>
 						&nbsp;&nbsp; Apple
 					</Button>
 				</Box>

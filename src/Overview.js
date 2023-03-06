@@ -7,12 +7,16 @@ import {
 	Radio,
 	FormControl,
 	FormControlLabel,
+	Box,
 	FormGroup,
 	MenuItem,
 	Select,
 	Tab,
 	Tabs,
 } from "@mui/material";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 import Input from "@mui/material/Input";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -24,7 +28,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch";
 import LogoImg from "./images/Logo.jpg";
 import colorImg from "./images/color.png";
 import typoImg from "./images/typo.png";
@@ -36,18 +40,23 @@ import dialogImg from "./images/dialog.png";
 import tooltipImg from "./images/tooltip.png";
 import accordionImg from "./images/carbon (2).png";
 import switchImg from "./images/carbon (3).png";
-import tabImg from "./images/tab.png";
+import tabImg from "./images/tabpanel.png";
 
 const ariaLabel = { "aria-label": "description" };
 
 function Overview() {
-	const [value, setValue] = React.useState();
+	const [dropvalue, setDropvalue] = React.useState();
+	const [value, setValue] = React.useState("1");
+
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
+	};
 	const [language, setLanguage] = React.useState("");
 	// adding the functionality of open and close popup modal
 	const [open, setOpen] = React.useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
-	const handleChange = (event) => {
+	const DrophandleChange = (event) => {
 		setLanguage(event.target.value);
 	};
 
@@ -277,17 +286,29 @@ function Overview() {
 			<br /> <br />
 			<TextField
 				id="outlined-basic"
-				label="Outlined"
+				placeholder="Outlined"
 				variant="outlined"
+				disableUnderline={true}
 				sx={{ marginRight: "15px", marginTop: "15px" }}
 			/>
+			<div className="" style={{ width: "14%", display: "inline-block" }}>
+				<Input
+					id="filled-basic"
+					placeholder="Filled"
+					variant="filled"
+					disableUnderline={true}
+					sx={{ marginRight: "15px", marginTop: "15px" }}
+				/>
+			</div>
 			<TextField
-				id="filled-basic"
-				label="Filled"
-				variant="filled"
-				sx={{ marginRight: "15px", marginTop: "15px" }}
+				id="standard-basic"
+				label="Standard"
+				defaultValue="Hello World"
+				placeholder="Standard"
+				variant="standard"
+				disableUnderline={true}
+				sx={{ marginLeft: "15px", marginTop: "0px" }}
 			/>
-			<TextField id="standard-basic" label="Standard" variant="standard" />
 			<br />
 			<br />
 			{/* ===========================CHECKBOX AND RADIO============================= */}
@@ -327,7 +348,7 @@ function Overview() {
 				<Select
 					sx={{ "& .MuiSvgIcon-root": { color: "white" }, width: "130px" }}
 					value={language}
-					onChange={handleChange}
+					onChange={DrophandleChange}
 					displayEmpty
 					inputProps={{ "aria-label": "Without label" }}
 					IconComponent={ExpandMoreIcon}
@@ -460,7 +481,7 @@ function Overview() {
 			<br /> <br />
 			<img src={tabImg} width="600px" alt="" />
 			<br /> <br />
-			<Tabs
+			{/* <Tabs
 				sx={{
 					marginLeft: "auto",
 					backgroundColor: "black",
@@ -500,7 +521,31 @@ function Overview() {
 						fontSize: "18px",
 					}}
 				/>
-			</Tabs>
+			</Tabs> */}
+			<Box
+				sx={{
+					marginLeft: "auto",
+					backgroundColor: "white",
+					textTransform: "Capitalize",
+					color: "black",
+					fontWeight: "400",
+				}}
+			>
+				<TabContext value={value}>
+					<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+						<TabList onChange={handleChange} aria-label="lab API tabs example">
+							<Tab label="Products" value="1" variant="overviewTab" />
+							<Tab label="Features" value="2" variant="overviewTab"/>
+							<Tab label="Pricing" value="3" variant="overviewTab" />
+							<Tab label="FAQs" value="4" variant="overviewTab" />
+						</TabList>
+					</Box>
+					<TabPanel value="1">Products</TabPanel>
+					<TabPanel value="2">Features</TabPanel>
+					<TabPanel value="3">Pricing</TabPanel>
+					<TabPanel value="4">FAQs</TabPanel>
+				</TabContext>
+			</Box>
 			{/* ===========================TOOLTIPS============================= */}
 			<Typography variant="h3" my={2}>
 				Tooltips
@@ -530,15 +575,6 @@ function Overview() {
 			</Typography>
 			<Tooltip
 				title="This is a tooltip"
-				placement="top-start"
-				sx={{ margin: "10px" }}
-			>
-				<Button color="primary" variant="contained">
-					top-left tooltip
-				</Button>
-			</Tooltip>
-			<Tooltip
-				title="This is a tooltip"
 				placement="top"
 				sx={{ margin: "10px" }}
 			>
@@ -548,11 +584,29 @@ function Overview() {
 			</Tooltip>
 			<Tooltip
 				title="This is a tooltip"
-				placement="top-end"
+				placement="left"
 				sx={{ margin: "10px" }}
 			>
 				<Button color="primary" variant="contained">
-					top-right tooltip
+					left tooltip
+				</Button>
+			</Tooltip>
+			<Tooltip
+				title="This is a tooltip"
+				placement="bottom"
+				sx={{ margin: "10px" }}
+			>
+				<Button color="primary" variant="contained">
+					bottom tooltip
+				</Button>
+			</Tooltip>
+			<Tooltip
+				title="This is a tooltip"
+				placement="right"
+				sx={{ margin: "10px" }}
+			>
+				<Button color="primary" variant="contained">
+					right tooltip
 				</Button>
 			</Tooltip>
 			<br />
@@ -563,12 +617,13 @@ function Overview() {
 			<Typography variant="bodyMedium">
 				The accordion can be customizable based on
 				<br /> using style overrides(MuiAccordion) for the custom variants.
-				<br /> There is a disabled attribute to disable the part of the accordion.
+				<br /> There is a disabled attribute to disable the part of the
+				accordion.
 			</Typography>
 			<br /> <br />
 			<img src={accordionImg} width="600px" alt="" />
 			<br /> <br />
-			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "white" } }}>
+			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "black" } }}>
 				<AccordionSummary
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel1a-content"
@@ -583,7 +638,7 @@ function Overview() {
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
-			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "white" } }}>
+			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "black" } }}>
 				<AccordionSummary
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel2a-content"
@@ -598,7 +653,7 @@ function Overview() {
 					</Typography>
 				</AccordionDetails>
 			</Accordion>
-			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "white" } }}>
+			<Accordion sx={{ "& .MuiSvgIcon-root": { color: "black" } }}>
 				<AccordionSummary
 					expandIcon={<ExpandMoreIcon />}
 					aria-controls="panel2a-content"
@@ -615,12 +670,12 @@ function Overview() {
 			</Accordion>
 			{/* ===========================switch============================= */}
 			<Typography variant="h3" mb={2} mt={3}>
-			Switch
+				Switch
 			</Typography>
 			<Typography variant="bodyMedium">
-			The switch can be customizable based on
-			<br />
-			<br />
+				The switch can be customizable based on
+				<br />
+				<br />
 				using color palette (to change the color) -
 				<ul>
 					<li>primary</li>
