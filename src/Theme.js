@@ -1,5 +1,8 @@
 import { createTheme } from "@mui/material";
 import { pink, purple, red, yellow } from "@mui/material/colors";
+import { styled } from "@mui/material/styles";
+import Rating from "@mui/material/Rating";
+import {TableRow,TableCell,tableCellClasses} from "@mui/material";
 
 // initializing colors to the variables
 
@@ -28,7 +31,7 @@ export const CustomTheme = createTheme({
 			main: jadeite,
 		},
 		info: {
-			main: info,
+			main: orange,
 		},
 		success: {
 			main: success,
@@ -215,7 +218,7 @@ export const CustomTheme = createTheme({
 							borderColor: "transparent",
 						},
 					},
-					"&.MuiButton-outlinedInherit" : {
+					"&.MuiButton-outlinedInherit": {
 						backgroundColor: "transparent",
 						borderWidth: "2px",
 						borderColor: "#111827",
@@ -247,16 +250,15 @@ export const CustomTheme = createTheme({
 						borderWidth: "1px",
 						borderColor: jadeite,
 					},
-					"&:hover":{
-						border:`1px solid ${jadeite}`,
+					"&:hover": {
+						border: `1px solid ${jadeite}`,
 					},
-					"&:after":{
-						borderBottom:"none",
+					"&:after": {
+						borderBottom: "none",
 					},
-					"&:before":{
-						borderBottom:"none",
+					"&:before": {
+						borderBottom: "none",
 					},
-					
 				}),
 			},
 			// adding the some custom input variants for the verification modal
@@ -282,14 +284,14 @@ export const CustomTheme = createTheme({
 				{
 					props: { variant: "filled" },
 					style: {
-					padding: "16px",
-					fontSize: "16px",
-					backgroundColor: "#FAFAFA",
-					color: "#111827",
-					border: "1px solid transparent",
-					outline: "none",
-					borderRadius: "8px",
-					display:"inline-block"
+						padding: "16px",
+						fontSize: "16px",
+						backgroundColor: "#FAFAFA",
+						color: "#111827",
+						border: "1px solid transparent",
+						outline: "none",
+						borderRadius: "8px",
+						display: "inline-block",
 					},
 				},
 			],
@@ -381,14 +383,14 @@ export const CustomTheme = createTheme({
 					backgroundColor: "white",
 					border: "none",
 					textDecoration: "none",
-					padding:"5px 0",
-					borderRadius:"8px",
+					padding: "5px 0",
+					borderRadius: "8px",
 					"&:placeholder": {
 						color: "#A0AEC0",
 					},
 					"&:hover": {
-						border:`1px solid ${jadeite}`,
-					}
+						border: `1px solid ${jadeite}`,
+					},
 				}),
 			},
 		},
@@ -400,19 +402,18 @@ export const CustomTheme = createTheme({
 					textDecoration: "none",
 					paddingBottom: "10px",
 					borderRadius: "8px",
-				"&:before":{
-					borderBottom:"none"
-
-				},
-				"&:focus":{
-					border:`1px solid ${jadeite}`,
-				},
-				"&:hover":{
-					border:`1px solid ${jadeite}`,
-				},
-				"&:after":{
-					border:"none"
-				}
+					"&:before": {
+						borderBottom: "none",
+					},
+					"&:focus": {
+						border: `1px solid ${jadeite}`,
+					},
+					"&:hover": {
+						border: `1px solid ${jadeite}`,
+					},
+					"&:after": {
+						border: "none",
+					},
 				}),
 			},
 		},
@@ -423,16 +424,14 @@ export const CustomTheme = createTheme({
 					backgroundColor: "white",
 					color: black,
 					border: "1px solid grey",
-					borderbottom:"grey",
-					borderRadius:"5px",
+					borderbottom: "grey",
+					borderRadius: "5px",
 					"&.Mui-expanded": {
-						border:`2px solid ${jadeite}`,
-					
+						border: `2px solid ${jadeite}`,
 					},
 					"&.Mui-disabled": {
 						backgroundColor: grey,
 					},
-					
 				}),
 			},
 		},
@@ -445,5 +444,61 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		MuiRating: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					color: jadeite,
+				}),
+			},
+		},
+		MuiPaginationItem: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					color: "green",
+				}),
+			},
+		},
+		MuiLink: {
+			styleOverrides: {
+				root: ({ ownerState }) => ({
+					"&.MuiLink-underlineNone:hover":{
+						color: jadeite,
+					}
+				}),
+			},
+		},
 	},
 });
+export const StyledRating = styled(Rating)({
+	"& .MuiRating-iconFilled": {
+		color: "#ff6d75",
+	},
+	"& .MuiRating-iconHover": {
+		color: "#ff3d47",
+	},
+});
+export const StyledIconRating = styled(Rating)(({ theme }) => ({
+	"& .MuiRating-iconEmpty .MuiSvgIcon-root": {
+		color: theme.palette.action.disabled,
+	},
+}));
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+	[`&.${tableCellClasses.head}`]: {
+		backgroundColor: grey,
+		color: black,
+	},
+	[`&.${tableCellClasses.body}`]: {
+		fontSize: 14,
+	},
+}));
+
+export const StyledTableRow = styled(TableRow)(({ theme }) => ({
+	"&:nth-of-type(odd)": {
+		backgroundColor: jadeite,
+		color: white,
+	},
+	// hide last border
+	"&:last-child td, &:last-child th": {
+		border: 0,
+	},
+}));

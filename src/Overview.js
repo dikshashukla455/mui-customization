@@ -13,10 +13,32 @@ import {
 	Select,
 	Tab,
 	Tabs,
+	Rating,
+	CircularProgress,
+	Autocomplete,
+	ClickAwayListener,
+	Alert,
+	Pagination,
+	AlertTitle,
+	TablePagination,
+	Menu,
+	MenuList,
+	Stack,
+	Table,
+	TableCell,
+	TableHead,
+	TableBody,
+	TableContainer,
+	TableRow,
+	Breadcrumbs,
+	Link
 } from "@mui/material";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
 import Input from "@mui/material/Input";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -25,6 +47,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CloseImg from "./images/cross.svg";
 import Tooltip from "@mui/material/Tooltip";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -41,12 +65,74 @@ import tooltipImg from "./images/tooltip.png";
 import accordionImg from "./images/carbon (2).png";
 import switchImg from "./images/carbon (3).png";
 import tabImg from "./images/tabpanel.png";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
+import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
+import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAltOutlined";
+import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
+import {
+	StyledRating,
+	StyledIconRating,
+	StyledTableCell,
+	StyledTableRow,
+} from "./Theme";
+import PropTypes from "prop-types";
+import MuiNavBar from "./components/MuiNavBar";
 
 const ariaLabel = { "aria-label": "description" };
 
 function Overview() {
 	const [dropvalue, setDropvalue] = React.useState();
 	const [value, setValue] = React.useState("1");
+	const [rating, setRating] = React.useState(3);
+	const [page, setPage] = React.useState(2);
+	const [rowsPerPage, setRowsPerPage] = React.useState(10);
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const [MenuOpen, setMenuOpen] = React.useState(false);
+	const anchorRef = React.useRef(null);
+
+	const handleToggle = () => {
+		setMenuOpen((prevMenuOpen) => !prevMenuOpen);
+	};
+
+	const handleMenuClose = (event) => {
+		if (anchorRef.current && anchorRef.current.contains(event.target)) {
+			return;
+		}
+
+		setMenuOpen(false);
+	};
+
+	function handleListKeyDown(event) {
+		if (event.key === "Tab") {
+			event.preventDefault();
+			setMenuOpen(false);
+		} else if (event.key === "Escape") {
+			setMenuOpen(false);
+		}
+	}
+
+	// return focus to the button when we transitioned from !open -> open
+	const prevOpen = React.useRef(MenuOpen);
+	React.useEffect(() => {
+		if (prevOpen.current === true && MenuOpen === false) {
+			anchorRef.current.focus();
+		}
+
+		prevOpen.current = MenuOpen;
+	}, [MenuOpen]);
+
+	const handleChangePage = (
+		event: React.MouseEvent<HTMLButtonElement> | null,
+		newPage: number
+	) => {
+		setPage(newPage);
+	};
+
+	const handleChangeRowsPerPage = (event) => {
+		setRowsPerPage(parseInt(event.target.value, 10));
+		setPage(0);
+	};
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue);
@@ -59,8 +145,84 @@ function Overview() {
 	const DrophandleChange = (event) => {
 		setLanguage(event.target.value);
 	};
+	const top100Films = [
+		{ title: "The Shawshank Redemption", year: 1994 },
+		{ title: "The Godfather", year: 1972 },
+		{ title: "The Godfather: Part II", year: 1974 },
+		{ title: "The Dark Knight", year: 2008 },
+		{ title: "12 Angry Men", year: 1957 },
+		{ title: "Schindler's List", year: 1993 },
+		{ title: "Pulp Fiction", year: 1994 },
+		{
+			title: "The Lord of the Rings: The Return of the King",
+			year: 2003,
+		},
+		{ title: "The Good, the Bad and the Ugly", year: 1966 },
+		{ title: "Fight Club", year: 1999 },
+		{
+			title: "The Lord of the Rings: The Fellowship of the Ring",
+			year: 2001,
+		},
+		{
+			title: "Star Wars: Episode V - The Empire Strikes Back",
+			year: 1980,
+		},
+		{ title: "Forrest Gump", year: 1994 },
+		{ title: "Inception", year: 2010 },
+		{
+			title: "The Lord of the Rings: The Two Towers",
+			year: 2002,
+		},
+		{ title: "One Flew Over the Cuckoo's Nest", year: 1975 },
+		{ title: "Goodfellas", year: 1990 },
+		{ title: "The Matrix", year: 1999 },
+		{ title: "Seven Samurai", year: 1954 },
+	];
+	const customIcons = {
+		1: {
+			icon: <SentimentVeryDissatisfiedIcon color="error" />,
+			label: "Very Dissatisfied",
+		},
+		2: {
+			icon: <SentimentDissatisfiedIcon color="error" />,
+			label: "Dissatisfied",
+		},
+		3: {
+			icon: <SentimentSatisfiedIcon color="warning" />,
+			label: "Neutral",
+		},
+		4: {
+			icon: <SentimentSatisfiedAltIcon color="success" />,
+			label: "Satisfied",
+		},
+		5: {
+			icon: <SentimentVerySatisfiedIcon color="success" />,
+			label: "Very Satisfied",
+		},
+	};
 
+	function IconContainer(props) {
+		const { value, ...other } = props;
+		return <span {...other}>{customIcons[value].icon}</span>;
+	}
+
+	IconContainer.propTypes = {
+		value: PropTypes.number.isRequired,
+	};
+	function createData(name, calories, fat, carbs, protein) {
+		return { name, calories, fat, carbs, protein };
+	}
+
+	const rows = [
+		createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+		createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+		createData("Eclair", 262, 16.0, 24, 6.0),
+		createData("Cupcake", 305, 3.7, 67, 4.3),
+		createData("Gingerbread", 356, 16.0, 49, 3.9),
+	];
 	return (
+		<div>
+		<MuiNavBar />
 		<div style={{ margin: "2rem 0 0 3rem" }}>
 			<Typography variant="h1">Overview</Typography>
 			<br />
@@ -535,7 +697,7 @@ function Overview() {
 					<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
 						<TabList onChange={handleChange} aria-label="lab API tabs example">
 							<Tab label="Products" value="1" variant="overviewTab" />
-							<Tab label="Features" value="2" variant="overviewTab"/>
+							<Tab label="Features" value="2" variant="overviewTab" />
 							<Tab label="Pricing" value="3" variant="overviewTab" />
 							<Tab label="FAQs" value="4" variant="overviewTab" />
 						</TabList>
@@ -694,6 +856,411 @@ function Overview() {
 				<FormControlLabel control={<Switch defaultChecked />} label="Label" />
 				<FormControlLabel disabled control={<Switch />} label="Disabled" />
 			</FormGroup>
+			{/* ===========================LOADING SPINNERS============================= */}
+			<Typography variant="h3" mb={2} mt={3}>
+				Loading spinners
+			</Typography>
+			<Typography variant="bodyMedium">
+				The loading spinner can be customizable based on
+				<br />
+				<br />
+				using color palette (to change the color) -
+				<ul>
+					<li>primary</li>
+					<li>secondary</li>
+					<li>info</li>
+					<li>danger</li>
+					<li>success</li>
+					<li>neutral</li>
+				</ul>
+				using style overrides(MuiCircularProgress) for the custom variants.{" "}
+				<br />
+				<br /> There is a disabled attribute to disable the switch.
+			</Typography>
+			<br /> <br />
+			<img src={switchImg} width="600px" alt="" />
+			<br></br>
+			<br />
+			<CircularProgress color="primary" size="md" value={40} />
+			<CircularProgress variant="solid" />
+			<CircularProgress variant="soft" />
+			<CircularProgress variant="outlined" />
+			<CircularProgress variant="plain" />
+			{/* ===========================multi select dropdown============================= */}
+			<Typography variant="h3" mb={2} mt={3}>
+				Multi select dropdown
+			</Typography>
+			<Typography variant="bodyMedium">
+				The multi select dropdown can be customizable based on
+				<br />
+				<br />
+				using color palette (to change the color) -
+				<ul>
+					<li>primary</li>
+					<li>secondary</li>
+					<li>info</li>
+					<li>danger</li>
+					<li>success</li>
+					<li>neutral</li>
+				</ul>
+				using style overrides(MuiCircularProgress) for the custom variants.
+			</Typography>
+			<br /> <br />
+			<img src={switchImg} width="600px" alt="" />
+			<br></br>
+			<br />
+			{/*<Autocomplete
+				multiple
+				id="tags-default"
+				placeholder="Favorites"
+				options={top100Films}
+				getOptionLabel={(option) => option.title}
+				defaultValue={[top100Films[0]]}
+			/>*/}
+			{/* ===========================Ratings============================= */}
+			<Typography variant="h3" mb={2} mt={3}>
+				Ratings
+			</Typography>
+			<Typography variant="bodyMedium">
+				The ratings can be customizable based on
+				<br />
+				<br />
+				using variants -
+				<ul>
+					<li>Controlled rating</li>
+					<li>no rating</li>
+					<li>Disable</li>
+					<li>Custom ratings</li>
+				</ul>
+				using size props -
+				<ul>
+					<li>Small</li>
+					<li>Medium(default)</li>
+					<li>Large</li>
+				</ul>
+				using style overrides(MuiRating) for the custom variants.
+			</Typography>
+			<br />
+			<br />
+			<Typography component="legend">Normal Rating with small size</Typography>
+			<Rating
+				name="simple-controlled"
+				value={rating}
+				onChange={(event, newValue) => {
+					setRating(newValue);
+				}}
+				max={6}
+				precision={0.5}
+				size="small"
+			/>
+			<Typography component="legend">Disable rating</Typography>
+			<Rating name="disabled" value={rating} disabled />
+			<Typography component="legend">
+				No rating given with large size
+			</Typography>
+			<Rating name="no-value" value={null} precision={0.5} size="large" />
+			<Typography component="legend">Customizing icon and color</Typography>
+			<StyledRating
+				name="customized-color"
+				defaultValue={2}
+				precision={0.5}
+				icon={<FavoriteIcon fontSize="inherit" />}
+				emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
+			/>
+			<Typography component="legend">Different icons and colors</Typography>
+			<StyledIconRating
+				name="highlight-selected-only"
+				defaultValue={2}
+				IconContainerComponent={IconContainer}
+				getLabelText={(value) => customIcons[value].label}
+				highlightSelectedOnly
+			/>
+			{/*******************Alerts*********************************/}
+			<Typography variant="h3" mb={2} mt={3}>
+				Alerts
+			</Typography>
+			<Typography variant="bodyMedium">
+				The ratings can be customizable based on
+				<br />
+				<br />
+				using severity levels -
+				<ul>
+					<li>error</li>
+					<li>warning</li>
+					<li>info</li>
+					<li>success</li>
+				</ul>
+				using variants -
+				<ul>
+					<li>filled</li>
+					<li>standard(default)</li>
+					<li>outlined</li>
+				</ul>
+				using style overrides(MuiAlert) for the custom variants.
+			</Typography>
+			<br />
+			<br />
+			<Box sx={{ width: "400px" }}>
+				<p>Standard variant:</p>
+				<Alert severity="error" color="secondary">
+					This is an error alert
+				</Alert>
+				<br />
+				<Alert severity="warning">This is a warning alert</Alert>
+				<br />
+				<p>Filled variant with alert title:</p>
+
+				<Alert severity="info" variant="filled">
+					<AlertTitle>Info</AlertTitle> This is an info alert
+				</Alert>
+				<br />
+				<Alert severity="success" color="primary" variant="filled">
+					<AlertTitle>Success</AlertTitle>
+					This is a success alert
+				</Alert>
+				<p>Outlined variant:</p>
+				<Alert severity="info" variant="outlined">
+					This is an info alert
+				</Alert>
+				<br />
+				<Alert severity="error" color="secondary" variant="outlined">
+					This is an error alert
+				</Alert>
+				<br />
+			</Box>
+			<Typography variant="h3" mb={2} mt={3}>
+				Pagination
+			</Typography>
+			<Typography variant="bodyMedium">
+				The Pagination can be customizable based on
+				<br />
+				<br />
+				using variants and shape -
+				<ul>
+					<li>Standard variant(default)</li>
+					<li>Outlined variant</li>
+					<li>Rounded Pagination</li>
+				</ul>
+				using size props -
+				<ul>
+					<li>Small</li>
+					<li>Medium(default)</li>
+					<li>Large</li>
+				</ul>
+				using style overrides(MuiPaginationItem) for the custom variants.
+			</Typography>
+			<br />
+			<br />
+			<p>Standard variant (default)</p>
+			<Pagination count={10} />
+			<Pagination count={10} color="primary" />
+			<Pagination count={10} disabled size="small" />
+			<p>Outlined variant:</p>
+			<Pagination count={10} variant="outlined" color="info" />
+			<Pagination count={10} variant="outlined" color="secondary" />
+			<p>Rounded Pagination:</p>
+			<Pagination
+				count={10}
+				variant="outlined"
+				color="secondary"
+				shape="rounded"
+				size="large"
+			/>
+			<br />
+			<Pagination count={10} color="success" shape="rounded" />
+			<p>Table pagination:</p>
+			<Box display="flex" justifyContent="start" alignItems="center">
+				<TablePagination
+					component="div"
+					count={100}
+					page={page}
+					onPageChange={handleChangePage}
+					rowsPerPage={rowsPerPage}
+					onRowsPerPageChange={handleChangeRowsPerPage}
+				/>
+			</Box>
+			{/************Menu List***************** */}
+			<Typography variant="h3" mb={2} mt={3}>
+				Menu list
+			</Typography>
+			<Typography variant="bodyMedium">
+				The menu list can be customizable based on
+				<br />
+				<br />
+				using transitions -
+				<ul>
+					<li>Clicked Transition (default)</li>
+					<li>Fade Transition</li>
+				</ul>
+				using style overrides(MuiMenu and MuiMenuItem) for the custom variants.
+			</Typography>
+			<br />
+			<br />
+			<Stack direction="row" spacing={2}>
+				<Paper>
+					<MenuList>
+						<MenuItem>Profile</MenuItem>
+						<MenuItem>My account</MenuItem>
+						<MenuItem>Logout</MenuItem>
+					</MenuList>
+				</Paper>
+				<div>
+					<Button
+						ref={anchorRef}
+						id="composition-button"
+						aria-controls={MenuOpen ? "composition-menu" : undefined}
+						aria-expanded={MenuOpen ? "true" : undefined}
+						aria-haspopup="true"
+						onClick={handleToggle}
+						variant="contained"
+					>
+						Dashboard
+					</Button>
+					<Popper
+						open={MenuOpen}
+						anchorEl={anchorRef.current}
+						role={undefined}
+						placement="bottom-start"
+						transition
+						disablePortal
+					>
+						{({ TransitionProps, placement }) => (
+							<Grow
+								{...TransitionProps}
+								style={{
+									transformOrigin:
+										placement === "bottom-start" ? "left top" : "left bottom",
+								}}
+							>
+								<Paper>
+									<ClickAwayListener onClickAway={handleMenuClose}>
+										<MenuList
+											autoFocusItem={MenuOpen}
+											id="composition-menu"
+											aria-labelledby="composition-button"
+											onKeyDown={handleListKeyDown}
+										>
+											<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+											<MenuItem onClick={handleMenuClose}>My account</MenuItem>
+											<MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+										</MenuList>
+									</ClickAwayListener>
+								</Paper>
+							</Grow>
+						)}
+					</Popper>
+				</div>
+			</Stack>
+			{/**********************Table*************************/}
+			<Typography variant="h3" mb={2} mt={3}>
+				Tables
+			</Typography>
+			<Typography variant="bodyMedium">
+				The Tables can be customizable based on
+				<br />
+				<br />
+				using variants -
+				<ul>
+					<li>Standard Table </li>
+					<li>Stripped table</li>
+				</ul>
+				using style overrides(MuiTable) for the custom variants.
+			</Typography>
+			<br />
+			<br />
+			<p>Standard Table</p>
+			<TableContainer component={Paper} style={{ width: "700px" }}>
+				<Table aria-label="simple table">
+					<TableHead>
+						<TableRow>
+							<TableCell>Dessert (100g serving)</TableCell>
+							<TableCell align="right">Calories</TableCell>
+							<TableCell align="right">Fat&nbsp;(g)</TableCell>
+							<TableCell align="right">Carbs&nbsp;(g)</TableCell>
+							<TableCell align="right">Protein&nbsp;(g)</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{rows.map((row) => (
+							<TableRow
+								key={row.name}
+								sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+							>
+								<TableCell component="th" scope="row">
+									{row.name}
+								</TableCell>
+								<TableCell align="right">{row.calories}</TableCell>
+								<TableCell align="right">{row.fat}</TableCell>
+								<TableCell align="right">{row.carbs}</TableCell>
+								<TableCell align="right">{row.protein}</TableCell>
+							</TableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableContainer>
+			<p>Stripped Table</p>
+			<TableContainer component={Paper} style={{ width: "700px" }}>
+				<Table aria-label="customized table">
+					<TableHead>
+						<TableRow>
+							<StyledTableCell>Dessert (100g serving)</StyledTableCell>
+							<StyledTableCell align="right">Calories</StyledTableCell>
+							<StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
+							<StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
+							<StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody>
+						{rows.map((row) => (
+							<StyledTableRow key={row.name}>
+								<StyledTableCell component="th" scope="row">
+									{row.name}
+								</StyledTableCell>
+								<StyledTableCell align="right">{row.calories}</StyledTableCell>
+								<StyledTableCell align="right">{row.fat}</StyledTableCell>
+								<StyledTableCell align="right">{row.carbs}</StyledTableCell>
+								<StyledTableCell align="right">{row.protein}</StyledTableCell>
+							</StyledTableRow>
+						))}
+					</TableBody>
+				</Table>
+			</TableContainer>
+			{/**********************BreadCrumbs*************************/}
+			<Typography variant="h3" mb={2} mt={3}>
+				Breadcrumbs
+			</Typography>
+			<Typography variant="bodyMedium">
+				The Tables can be customizable based on
+				<br />
+				<ul>
+					<li>icons</li>
+					<li>separators(-,>,/)</li>
+				</ul>
+				using style overrides(MuiBreadcrumbs and MuiLink) for the custom variants.
+			</Typography>
+			<br />
+			<br />
+			<Breadcrumbs aria-label="breadcrumb" variant="h6">
+				<Link underline="none" color="inherit" href="/">
+					MUI
+				</Link>
+				<Link
+					underline="none"
+					color="inherit"
+					href="/material-ui/getting-started/installation/"
+				>
+					Core
+				</Link>
+				<Link
+					underline="none"
+					color="text.primary"
+					href="/material-ui/react-breadcrumbs/"
+					aria-current="page"
+				>
+					Breadcrumbs
+				</Link>
+			</Breadcrumbs>
+			</div>
 		</div>
 	);
 }
