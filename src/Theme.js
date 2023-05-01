@@ -21,6 +21,9 @@ const secondaryHoverColor = "#6a1b9a";
 const infoHoverColor = "#00bfa5";
 const successHoverColor = "#558b2f";
 const errorHoverColor = "#c62828";
+const offWhite="#fafafa";
+const favColor="#ff6d75";
+const favHoverColor="#ff3d47";
 
 export const CustomTheme = createTheme({
 	spacing: 10,
@@ -221,11 +224,11 @@ export const CustomTheme = createTheme({
 					"&.MuiButton-outlinedInherit": {
 						backgroundColor: "transparent",
 						borderWidth: "2px",
-						borderColor: "#111827",
-						color: "#111827",
+						borderColor: black,
+						color: black,
 						"&:hover": {
 							color: white,
-							backgroundColor: "#111827",
+							backgroundColor: black,
 							borderColor: "transparent",
 						},
 					},
@@ -239,8 +242,8 @@ export const CustomTheme = createTheme({
 					width: "100%",
 					padding: "16px",
 					fontSize: "16px",
-					backgroundColor: "#FAFAFA",
-					color: "#111827",
+					backgroundColor: offWhite,
+					color: black,
 					border: "1px solid transparent",
 					outline: "none",
 					borderRadius: "8px",
@@ -286,8 +289,8 @@ export const CustomTheme = createTheme({
 					style: {
 						padding: "16px",
 						fontSize: "16px",
-						backgroundColor: "#FAFAFA",
-						color: "#111827",
+						backgroundColor: offWhite,
+						color: black,
 						border: "1px solid transparent",
 						outline: "none",
 						borderRadius: "8px",
@@ -397,7 +400,7 @@ export const CustomTheme = createTheme({
 		MuiFilledInput: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					backgroundColor: "#fafafa",
+					backgroundColor: offWhite,
 					borderBottom: "none",
 					textDecoration: "none",
 					paddingBottom: "10px",
@@ -471,10 +474,10 @@ export const CustomTheme = createTheme({
 });
 export const StyledRating = styled(Rating)({
 	"& .MuiRating-iconFilled": {
-		color: "#ff6d75",
+		color: favColor,
 	},
 	"& .MuiRating-iconHover": {
-		color: "#ff3d47",
+		color: favHoverColor,
 	},
 });
 export const StyledIconRating = styled(Rating)(({ theme }) => ({
