@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material";
 import { pink, purple, red, yellow } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import Rating from "@mui/material/Rating";
-import {TableRow,TableCell,tableCellClasses} from "@mui/material";
+import { TableRow, TableCell, tableCellClasses } from "@mui/material";
 
 // initializing colors to the variables
 
@@ -21,9 +21,9 @@ const secondaryHoverColor = "#6a1b9a";
 const infoHoverColor = "#00bfa5";
 const successHoverColor = "#558b2f";
 const errorHoverColor = "#c62828";
-const offWhite="#fafafa";
-const favColor="#ff6d75";
-const favHoverColor="#ff3d47";
+const offWhite = "#fafafa";
+const favColor = "#ff6d75";
+const favHoverColor = "#ff3d47";
 
 export const CustomTheme = createTheme({
 	spacing: 10,
@@ -253,14 +253,12 @@ export const CustomTheme = createTheme({
 						borderWidth: "1px",
 						borderColor: jadeite,
 					},
+
 					"&:hover": {
 						border: `1px solid ${jadeite}`,
 					},
-					"&:after": {
-						borderBottom: "none",
-					},
-					"&:before": {
-						borderBottom: "none",
+					"&.MuiInput-underline:after": {
+						borderBottom:"none" ,
 					},
 				}),
 			},
@@ -384,16 +382,29 @@ export const CustomTheme = createTheme({
 			styleOverrides: {
 				root: ({ ownerState }) => ({
 					backgroundColor: "white",
-					border: "none",
 					textDecoration: "none",
 					padding: "5px 0",
 					borderRadius: "8px",
+					border: "1px solid transparent",
+					outline: "none",
 					"&:placeholder": {
 						color: "#A0AEC0",
 					},
 					"&:hover": {
-						border: `1px solid ${jadeite}`,
+						border: "none",
+						outline: "none",
 					},
+					"&:before": {
+						border: "none",
+						outline: "none",
+					},
+					"&:after": {
+						border: "none",
+						outline: "none",
+					},
+					"&.MuiOutlinedInput-notchedOutline":{
+						border: "none",
+					}
 				}),
 			},
 		},
@@ -409,10 +420,10 @@ export const CustomTheme = createTheme({
 						borderBottom: "none",
 					},
 					"&:focus": {
-						border: `1px solid ${jadeite}`,
+						border: `2px solid ${jadeite}`,
 					},
 					"&:hover": {
-						border: `1px solid ${jadeite}`,
+						border: `2px solid ${jadeite}`,
 					},
 					"&:after": {
 						border: "none",
@@ -464,9 +475,9 @@ export const CustomTheme = createTheme({
 		MuiLink: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					"&.MuiLink-underlineNone:hover":{
+					"&.MuiLink-underlineNone:hover": {
 						color: jadeite,
-					}
+					},
 				}),
 			},
 		},

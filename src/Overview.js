@@ -5,6 +5,7 @@ import {
 	TextField,
 	Checkbox,
 	Card,
+	Chip,
 	CardActions,
 	CardContent,
 	Radio,
@@ -12,9 +13,13 @@ import {
 	FormControlLabel,
 	Box,
 	FormGroup,
+	shadows,
 	IconButton,
 	MenuItem,
 	Select,
+	Stepper,
+	Step,
+	StepButton,
 	Tab,
 	Tabs,
 	Rating,
@@ -57,6 +62,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+/*import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";*/
 import Switch from "@mui/material/Switch";
 import LogoImg from "./images/Logo.jpg";
 import colorImg from "./images/color.png";
@@ -238,29 +246,46 @@ function Overview(props) {
 	const images = [
 		{
 			label: "First Card",
-			title: "First Card Title",
+			title: "First card title",
 			content: "This is the content of the first card",
 		},
 		{
 			label: "Second Card",
-			title: "Second Card Title",
+			title: "Second card title",
 			content: "This is the content of the second card",
 		},
 		{
 			label: "Third Card",
-			title: "Third Card Title",
+			title: "Third card title",
 			content: "This is the content of the third card",
 		},
 		{
-			label: "Fourth Card",
-			title: "Fourth Card Title",
+			label: "fourth Card",
+			title: "fourth card title",
 			content: "This is the content of the fourth card",
+		},
+	];
+	const testimonial = [
+		{
+			imgPath:"https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+			name: "First Testimonial",
+			body: "This is the content of the first testimonial card",
+		},
+		{
+			imgPath:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+		    name: "Second Testimonial",
+			body: "This is the content of the second testimonial card",
+		},
+		{
+			imgPath:"https://images.unsplash.com/photo-1504593811423-6dd665756598?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+			name: "Third Testimonial",
+			body: "This is the content of the third testimonial card",
 		},
 	];
 	const theme = useTheme();
 	const [activeStep, setActiveStep] = React.useState(0);
 	const maxSteps = images.length;
-
+const testimonialMaxSteps = testimonial.length;
 	const handleNext = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
 	};
@@ -299,6 +324,60 @@ function Overview(props) {
 			</IconButton>
 		</>
 	);
+	// stepper
+	const steps = [
+		"Select campaign settings",
+		"Create an ad group",
+		"Create an ad",
+	];
+	const [completed, setCompleted] = React.useState({});
+
+	const totalSteps = () => {
+		return steps.length;
+	};
+
+	const completedSteps = () => {
+		return Object.keys(completed).length;
+	};
+
+	const isLastStep = () => {
+		return activeStep === totalSteps() - 1;
+	};
+
+	const allStepsCompleted = () => {
+		return completedSteps() === totalSteps();
+	};
+
+	const handleStepNext = () => {
+		const newActiveStep =
+			isLastStep() && !allStepsCompleted()
+				? // It's the last step, but not all steps have been completed,
+				  // find the first step that has been completed
+				  steps.findIndex((step, i) => !(i in completed))
+				: activeStep + 1;
+		setActiveStep(newActiveStep);
+	};
+
+	const handleStepBack = () => {
+		setActiveStep((prevActiveStep) => prevActiveStep - 1);
+	};
+
+	const handleStep = (step) => () => {
+		setActiveStep(step);
+	};
+
+	const handleComplete = () => {
+		const newCompleted = completed;
+		newCompleted[activeStep] = true;
+		setCompleted(newCompleted);
+		handleNext();
+	};
+
+	const handleReset = () => {
+		setActiveStep(0);
+		setCompleted({});
+	};
+
 	return (
 		<div>
 			<MuiNavBar />
@@ -547,7 +626,6 @@ function Overview(props) {
 					label="Standard"
 					defaultValue="Hello World"
 					placeholder="Standard"
-					variant="standard"
 					disableUnderline={true}
 					sx={{ marginLeft: "15px", marginTop: "0px" }}
 				/>
@@ -727,47 +805,6 @@ function Overview(props) {
 				<br /> <br />
 				<img src={tabImg} width="600px" alt="" />
 				<br /> <br />
-				{/* <Tabs
-				sx={{
-					marginLeft: "auto",
-					backgroundColor: "black",
-					textTransform: "Capitalize",
-					fontWeight: "400",
-					width: "50%",
-					marginTop: "20px",
-					marginX: "0",
-				}}
-				indicatorColor="secondary"
-				textColor="primary"
-				value={value}
-				onChange={(e, value) => setValue(value)}
-			>
-				<Tab label="Products" sx={{}} />
-				<Tab
-					label="Features"
-					sx={{
-						textTransform: "Capitalize",
-						fontWeight: "400",
-						fontSize: "18px",
-					}}
-				/>
-				<Tab
-					label="Pricing"
-					sx={{
-						textTransform: "Capitalize",
-						fontWeight: "400",
-						fontSize: "18px",
-					}}
-				/>
-				<Tab
-					label="FAQ"
-					sx={{
-						textTransform: "Capitalize",
-						fontWeight: "400",
-						fontSize: "18px",
-					}}
-				/>
-			</Tabs> */}
 				<Box
 					sx={{
 						marginLeft: "auto",
@@ -983,30 +1020,79 @@ function Overview(props) {
 				<Typography variant="bodyMedium">
 					The multi select dropdown can be customizable based on
 					<br />
-					<br />
-					using color palette (to change the color) -
-					<ul>
-						<li>primary</li>
-						<li>secondary</li>
-						<li>info</li>
-						<li>danger</li>
-						<li>success</li>
-						<li>neutral</li>
-					</ul>
 					using style overrides(MuiCircularProgress) for the custom variants.
 				</Typography>
 				<br /> <br />
 				<img src={switchImg} width="600px" alt="" />
 				<br></br>
 				<br />
-				{/*<Autocomplete
-				multiple
-				id="tags-default"
-				placeholder="Favorites"
-				options={top100Films}
-				getOptionLabel={(option) => option.title}
-				defaultValue={[top100Films[0]]}
-			/>*/}
+				<Stack spacing={3} sx={{ width: 500 }}>
+					{" "}
+					<Autocomplete
+						multiple
+						id="tags-standard"
+						options={top100Films}
+						getOptionLabel={(option) => option.title}
+						defaultValue={[top100Films[13]]}
+						renderInput={(params) => (
+							<TextField
+								{...params}
+								variant="standard"
+								label=""
+								placeholder="Favorites"
+							/>
+						)}
+					/>{" "}
+					<Autocomplete
+						multiple
+						id="tags-outlined"
+						options={top100Films}
+						getOptionLabel={(option) => option.title}
+						defaultValue={[top100Films[13]]}
+						filterSelectedOptions
+						renderInput={(params) => (
+							<TextField
+								{...params}
+								label="filterSelectedOptions"
+								placeholder="Favorites"
+							/>
+						)}
+					/>{" "}
+					<Autocomplete
+						multiple
+						id="tags-filled"
+						options={top100Films.map((option) => option.title)}
+						defaultValue={[top100Films[13].title]}
+						freeSolo
+						renderTags={(value, getTagProps) =>
+							value.map((option, index) => (
+								<Chip
+									variant="outlined"
+									label={option}
+									{...getTagProps({ index })}
+								/>
+							))
+						}
+						renderInput={(params) => (
+							<TextField
+								{...params}
+								variant="filled"
+								label="freeSolo"
+								placeholder="Favorites"
+							/>
+						)}
+					/>{" "}
+					<Autocomplete
+						multiple
+						id="tags-readOnly"
+						options={top100Films.map((option) => option.title)}
+						defaultValue={[top100Films[12].title, top100Films[13].title]}
+						readOnly
+						renderInput={(params) => (
+							<TextField {...params} label="readOnly" placeholder="Favorites" />
+						)}
+					/>{" "}
+				</Stack>
 				{/* ===========================Ratings============================= */}
 				<Typography variant="h3" mb={2} mt={3}>
 					Ratings
@@ -1444,15 +1530,172 @@ function Overview(props) {
 				</Typography>
 				<br />
 				<br />
-				<Button onClick={handleClick} variant="contained">Open a snackbar</Button>
+				<Button onClick={handleClick} variant="contained">
+					Open a snackbar
+				</Button>
 				<Snackbar
 					open={barOpen}
 					autoHideDuration={6000}
 					onClose={handleBarClose}
 					message="Note archived"
 					action={action}
-					anchorOrigin={{ vertical:"bottom", horizontal:"right" }}
+					anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
 				/>
+				{/*********************Stepper***********************/}
+				<Typography variant="h3" mb={2} mt={3}>
+					Stepper
+				</Typography>
+				<Typography variant="bodyMedium">
+					The Stepper can be customizable based on using style overrides
+					<br />
+					(MuiStepper) for the custom variants.
+				</Typography>
+				<br />
+				<br />
+				<Box sx={{ width: "60%" }}>
+					<Stepper nonLinear activeStep={activeStep}>
+						{steps.map((label, index) => (
+							<Step key={label} completed={completed[index]}>
+								<StepButton color="inherit" onClick={handleStep(index)}>
+									{label}
+								</StepButton>
+							</Step>
+						))}
+					</Stepper>
+					<div>
+						{allStepsCompleted() ? (
+							<>
+								<Typography sx={{ mt: 2, mb: 1 }}>
+									All steps completed - you&apos;re finished
+								</Typography>
+								<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+									<Box sx={{ flex: "1 1 auto" }} />
+									<Button onClick={handleReset}>Reset</Button>
+								</Box>
+							</>
+						) : (
+							<>
+								<Typography sx={{ mt: 2, mb: 1, py: 1 }}>
+									Step {activeStep + 1}
+								</Typography>
+								<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+									<Button
+										color="inherit"
+										disabled={activeStep === 0}
+										onClick={handleStepBack}
+										sx={{ mr: 1 }}
+									>
+										Back
+									</Button>
+									<Box sx={{ flex: "1 1 auto" }} />
+									<Button onClick={handleStepNext} sx={{ mr: 1 }}>
+										Next
+									</Button>
+									{activeStep !== steps.length &&
+										(completed[activeStep] ? (
+											<Typography
+												variant="caption"
+												sx={{ display: "inline-block" }}
+											>
+												Step {activeStep + 1} already completed
+											</Typography>
+										) : (
+											<Button onClick={handleComplete}>
+												{completedSteps() === totalSteps() - 1
+													? "Finish"
+													: "Complete Step"}
+											</Button>
+										))}
+								</Box>
+							</>
+						)}
+					</div>
+				</Box>
+				{/*********************Stepper***********************/}
+				<Typography variant="h3" mb={2} mt={3}>
+					Date Picker
+				</Typography>
+				<Typography variant="bodyMedium">
+					The Date Picker can be customizable based on using style overrides
+					<br />
+					(MuiS) for the custom variants.
+				</Typography>
+				<br />
+				<br />
+				{/*<LocalizationProvider dateAdapter={AdapterDayjs}>
+					<DateCalendar />
+				</LocalizationProvider>*/}
+				{/**********************Testimonials*************************/}
+				<Typography variant="h3" mb={2} mt={3}>
+					Testimonials
+				</Typography>
+				<Typography variant="bodyMedium">
+					The Testimonials can be customizable based on using style overrides
+					<br />
+					(MuiStepper) for the custom variants.
+				</Typography>
+				<br />
+				<br />
+				<Box sx={{ maxWidth: 400, flexGrow: 1, boxShadow:2 }}>
+					<AutoPlaySwipeableViews
+						axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+						index={activeStep}
+						onChangeIndex={handleStepChange}
+						enableMouseEvents
+					>
+						{testimonial.map((step, index) => (
+							<div key={step.label}>
+								{Math.abs(activeStep - index) <= 2 ? (
+									<Card sx={{ minWidth:350}} >
+										<CardContent>
+											<center>
+												<img src={step.imgPath} alt="" width="100" height="90" style={{"borderRadius":"50%"}}/>
+											</center>
+											<Typography variant="h6" component="div" textAlign={"center"}>
+												{step.name}
+											</Typography>
+											<br />
+											<Typography variant="bodyMedium" textAlign={"center"}>{step.body}</Typography>
+										</CardContent>
+									</Card>
+								) : null}
+							</div>
+						))}
+					</AutoPlaySwipeableViews>
+					<MobileStepper
+						steps={testimonialMaxSteps}
+						position="static"
+						activeStep={activeStep}
+						nextButton={
+							<Button
+								size="small"
+								onClick={handleNext}
+								disabled={activeStep === maxSteps - 1}
+							>
+								Next
+								{theme.direction === "rtl" ? (
+									<KeyboardArrowLeft />
+								) : (
+									<KeyboardArrowRight />
+								)}
+							</Button>
+						}
+						backButton={
+							<Button
+								size="small"
+								onClick={handleBack}
+								disabled={activeStep === 0}
+							>
+								{theme.direction === "rtl" ? (
+									<KeyboardArrowRight />
+								) : (
+									<KeyboardArrowLeft />
+								)}
+								Back
+							</Button>
+						}
+					/>
+				</Box>
 			</div>
 		</div>
 	);
