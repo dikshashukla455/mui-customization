@@ -5,12 +5,13 @@ import Rating from "@mui/material/Rating";
 import { TableRow, TableCell, tableCellClasses } from "@mui/material";
 
 // initializing colors to the variables
-
+const body = { small: "14px", medium: "16px", large: "18px" };
 const jadeite = "#34CAA5";
+const primary = { main: jadeite };
 const orange = "#FDCF24";
 const cacophony = "#B8E716";
 const white = "#ffffff";
-const secondary = "#9c27b0";
+const secondary = {main: "#9c27b0"};
 const info = "#1de9b6";
 const success = "#8bc34a";
 const error = "#f44336";
@@ -55,10 +56,6 @@ export const CustomTheme = createTheme({
 		White: {
 			main: white,
 		},
-
-		redGradient: {
-			background: "linear-gradient(95.49deg, #FCAD02 -36.87%, #FF0041 98.63%)",
-		},
 	},
 	// typography (font size and weight) and headings
 	typography: {
@@ -97,13 +94,13 @@ export const CustomTheme = createTheme({
 			fontSize: "20px",
 		},
 		bodyLarge: {
-			fontSize: "18px",
+			fontSize: body.large,
 		},
 		bodyMedium: {
-			fontSize: "16px",
+			fontSize: body.medium,
 		},
 		body1: {
-			fontSize: "14px",
+			fontSize: body.small,
 		},
 	},
 	// Styling button components
@@ -113,12 +110,12 @@ export const CustomTheme = createTheme({
 				root: ({ ownerState }) => ({
 					borderRadius: "8px",
 					fontWeight: 400,
-					fontSize: "14px",
+					fontSize: body.small,
 					boxShadow: "none",
 					textTransform: "capitalize",
 					// primary color - contained and outlined
 					"&.MuiButton-containedPrimary": {
-						backgroundColor: jadeite,
+						backgroundColor: primary.main,
 						color: white,
 						cursor: "pointer",
 						"&:hover": {
@@ -129,17 +126,17 @@ export const CustomTheme = createTheme({
 					"&.MuiButton-outlinedPrimary": {
 						backgroundColor: "transparent",
 						borderWidth: "2px",
-						borderColor: jadeite,
-						color: jadeite,
+						borderColor: primary.main,
+						color: primary.main,
 						"&:hover": {
 							color: white,
-							backgroundColor: jadeite,
+							backgroundColor: primary.main,
 							borderColor: "transparent",
 						},
 					},
 					// secondary color - contained and outlined
 					"&.MuiButton-containedSecondary": {
-						backgroundColor: secondary,
+						backgroundColor: secondary.main,
 						color: white,
 						cursor: "pointer",
 						"&:hover": {
@@ -150,11 +147,11 @@ export const CustomTheme = createTheme({
 					"&.MuiButton-outlinedSecondary": {
 						backgroundColor: "transparent",
 						borderWidth: "2px",
-						borderColor: secondary,
-						color: secondary,
+						borderColor: secondary.main,
+						color: secondary.main,
 						"&:hover": {
 							color: white,
-							backgroundColor: secondary,
+							backgroundColor: secondary.main,
 							borderColor: "transparent",
 						},
 					},
@@ -251,14 +248,14 @@ export const CustomTheme = createTheme({
 					"&.Mui-focused": {
 						borderStyle: "solid",
 						borderWidth: "1px",
-						borderColor: jadeite,
+						borderColor: primary.main,
 					},
 
 					"&:hover": {
-						border: `1px solid ${jadeite}`,
+						border: `1px solid ${primary.main}`,
 					},
 					"&.MuiInput-underline:after": {
-						borderBottom:"none" ,
+						borderBottom: "none",
 					},
 				}),
 			},
@@ -314,16 +311,16 @@ export const CustomTheme = createTheme({
 				root: ({ ownerState }) => ({
 					textTransform: "Capitalize",
 					fontWeight: "400",
-					fontSize: "18px",
-					color: "white",
+					fontSize: body.large,
+					color: white,
 				}),
 			},
 			variants: [
 				{
 					props: { variant: "overviewTab" },
 					style: {
-						color: "black",
-						fontSize: "14px",
+						color: black,
+						fontSize: body.small,
 					},
 				},
 			],
@@ -336,7 +333,7 @@ export const CustomTheme = createTheme({
 					outline: "none",
 					border: "none",
 					fontWeight: "400",
-					fontSize: "18px",
+					fontSize: body.large,
 				}),
 			},
 		},
@@ -345,10 +342,10 @@ export const CustomTheme = createTheme({
 			styleOverrides: {
 				root: ({ ownerState }) => ({
 					marginTop: "5px",
-					fontSize: "16px",
+					fontSize: body.medium,
 					width: "67px",
 					height: "42px",
-					backgroundColor: jadeite,
+					backgroundColor: primary.main,
 					fontWeight: "600",
 					color: white,
 					borderRadius: "8px",
@@ -364,24 +361,19 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// input lables
 		MuiFormControlLabel: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					color: "black",
+					color: black,
 				}),
 			},
 		},
-		MuiFormControlLabel: {
-			styleOverrides: {
-				root: ({ ownerState }) => ({
-					color: "black",
-				}),
-			},
-		},
+		// Textfield with outlined variant
 		MuiOutlinedInput: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					backgroundColor: "white",
+					backgroundColor: white,
 					textDecoration: "none",
 					padding: "5px 0",
 					borderRadius: "8px",
@@ -402,12 +394,13 @@ export const CustomTheme = createTheme({
 						border: "none",
 						outline: "none",
 					},
-					"&.MuiOutlinedInput-notchedOutline":{
+					"&.MuiOutlinedInput-notchedOutline": {
 						border: "none",
-					}
+					},
 				}),
 			},
 		},
+		// textfield with filled input
 		MuiFilledInput: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
@@ -420,10 +413,10 @@ export const CustomTheme = createTheme({
 						borderBottom: "none",
 					},
 					"&:focus": {
-						border: `2px solid ${jadeite}`,
+						border: `2px solid ${primary.main}`,
 					},
 					"&:hover": {
-						border: `2px solid ${jadeite}`,
+						border: `2px solid ${primary.main}`,
 					},
 					"&:after": {
 						border: "none",
@@ -431,17 +424,18 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// accordion
 		MuiAccordion: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
 					width: "600px",
-					backgroundColor: "white",
+					backgroundColor: white,
 					color: black,
 					border: "1px solid grey",
 					borderbottom: "grey",
 					borderRadius: "5px",
 					"&.Mui-expanded": {
-						border: `2px solid ${jadeite}`,
+						border: `2px solid ${primary.main}`,
 					},
 					"&.Mui-disabled": {
 						backgroundColor: grey,
@@ -449,6 +443,7 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// toggle switch
 		MuiSwitch: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
@@ -458,13 +453,15 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// feedback ratings
 		MuiRating: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
-					color: jadeite,
+					color: primary.main,
 				}),
 			},
 		},
+		// Pagination
 		MuiPaginationItem: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
@@ -472,17 +469,19 @@ export const CustomTheme = createTheme({
 				}),
 			},
 		},
+		// breadcrumbs
 		MuiLink: {
 			styleOverrides: {
 				root: ({ ownerState }) => ({
 					"&.MuiLink-underlineNone:hover": {
-						color: jadeite,
+						color: primary.main,
 					},
 				}),
 			},
 		},
 	},
 });
+// custom styling for favourite rating
 export const StyledRating = styled(Rating)({
 	"& .MuiRating-iconFilled": {
 		color: favColor,
@@ -496,19 +495,21 @@ export const StyledIconRating = styled(Rating)(({ theme }) => ({
 		color: theme.palette.action.disabled,
 	},
 }));
+// custom styling for stripped tables
+// table cells
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
 		backgroundColor: grey,
 		color: black,
 	},
 	[`&.${tableCellClasses.body}`]: {
-		fontSize: 14,
+		fontSize: body.small,
 	},
 }));
-
+// table rows
 export const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	"&:nth-of-type(odd)": {
-		backgroundColor: jadeite,
+		backgroundColor: primary.main,
 		color: white,
 	},
 	// hide last border
