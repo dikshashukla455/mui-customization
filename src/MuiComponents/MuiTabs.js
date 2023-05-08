@@ -1,10 +1,14 @@
 import React from "react";
-import { Typography,Tab} from "@mui/material";
+import { Typography,Tab, Box} from "@mui/material";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import tabImg from "../images/tabpanel.png";
 function Tabs() {
+	const [value, setValue] = React.useState("1");
+	const handleChange = (event, newValue) => {
+		setValue(newValue);
+	};
 	return (
 		<div>
 			<Typography variant="h3" my={2}>

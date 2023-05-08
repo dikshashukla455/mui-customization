@@ -12,7 +12,32 @@ import Banner from "./components/Banner";
 import SignUp from "./SignUp";
 import Overview from "./Overview";
 import RouterLink from "./RouterLink";
-
+import Colors from "./MuiComponents/Colors";
+import Heading from "./MuiComponents/Heading";
+import Buttons from "./MuiComponents/Buttons";
+import InputButton from "./MuiComponents/InputButton";
+import InputField from "./MuiComponents/InputField";
+import Dropdown from "./MuiComponents/Dropdown";
+import DialogBox from "./MuiComponents/DialogBox";
+import Tooltips from "./MuiComponents/Tooltips";
+import Accordions from "./MuiComponents/Accordions";
+import MuiTabs from "./MuiComponents/MuiTabs";
+import Switchs from "./MuiComponents/Switchs";
+import {
+	CustomizedSteppers,
+	StandardStepper,
+} from "./MuiComponents/CustomStepper";
+import Spinner from "./MuiComponents/Spinner";
+import MultiSelectDrop from "./MuiComponents/MultiSelectDrop";
+import Ratings from "./MuiComponents/Ratings";
+import Alerts from "./MuiComponents/Alerts";
+import Paginations from "./MuiComponents/Paginations";
+import MenuLists from "./MuiComponents/MenuLists";
+import Tables from "./MuiComponents/Tables";
+import MuiBreadcrumb from "./MuiComponents/MuiBreadcrumb";
+import MuiCarousel from "./MuiComponents/MuiCarousel";
+import Testimonials from "./MuiComponents/Testimonials";
+import Snackbars from "./MuiComponents/Snackbars";
 function App() {
 	return (
 		<>
@@ -26,6 +51,18 @@ function App() {
 					<Route path="/login" element={<Login />} />
 					{/************SIGNUP PAGE**********/}
 					<Route path="/register" element={<SignUp />} />
+					<Route path="/color" element={<Colors />} />
+					{/* ===========================TYPOGRAPHY============================= */}
+					<Route path="/heading" element={<Heading />} />
+					{/* ===========================BUTTONS============================= */}
+					<Route path="/textfield" element={<InputField />} />
+					<Route path="/inputbutton" element={<InputButton />} />
+					<Route path="/dropdown" element={<Dropdown />} />
+					<Route path="/dialog" element={<DialogBox />} />
+					<Route path="/tab" element={<MuiTabs />} />
+					<Route path="/tooltip" element={<Tooltips />} />
+					<Route path="/accordion" element={<Accordions />} />
+					<Route path="/switch" element={<StandardStepper />} />
 				</Routes>
 				
 			</ThemeProvider>

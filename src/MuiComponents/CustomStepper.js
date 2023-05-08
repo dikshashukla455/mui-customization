@@ -211,6 +211,7 @@ const steppers = [
 ];
 <br />
 export function StandardStepper() {
+	
 	const [activeStep, setActiveStep] = React.useState(0);
 	const [completed, setCompleted] = React.useState({});
 
@@ -261,6 +262,14 @@ export function StandardStepper() {
 	};
 	return (
         <Box>
+		<Typography variant="h3" mb={2} mt={3}>
+						Stepper
+					</Typography>
+					<Typography variant="bodyMedium">
+						The stepper can be customizable based on using style overrides
+						<br />
+						(MuiStepper) for the custom variants.
+					</Typography>
         <Box>
         <Typography variant="h6" mt={5}>Standard Stepper</Typography>
         </Box>
