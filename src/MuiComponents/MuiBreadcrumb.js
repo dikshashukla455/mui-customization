@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Link, Breadcrumbs } from "@mui/material";
+import breadcrumbImg from "../images/breadcrumb.png";
 function MuiBreadcrumb() {
 	return (
 		<div>
@@ -17,6 +18,8 @@ function MuiBreadcrumb() {
 				using style overrides(MuiBreadcrumbs and MuiLink) for the custom
 				variants.
 			</Typography>
+			<br /> <br />
+			<img src={breadcrumbImg} width="600px" alt="" />
 			<br />
 			<br />
 			<Breadcrumbs aria-label="breadcrumb" variant="h6">

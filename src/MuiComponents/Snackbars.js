@@ -1,6 +1,7 @@
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Typography, Snackbar, IconButton, Button } from "@mui/material";
+import SnackBarImg from "../images/snackbar.png";
 function Snackbars() {
     const [barOpen, setBarOpen] = React.useState(false);
 
@@ -38,6 +39,8 @@ function Snackbars() {
 				<br />
 				(MuiSnackbar) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={SnackBarImg} width="600px" alt="" />
 			<br />
 			<br />
 			<Button onClick={handleClick} variant="contained">

@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Box, Pagination, TablePagination } from "@mui/material";
+import PaginationImg from "../images/pagination.png";
 function Paginations() {
 	const [page, setPage] = React.useState(2);
 	const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -34,6 +35,8 @@ function Paginations() {
 				</ul>
 				using style overrides(MuiPaginationItem) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={PaginationImg} width="600px" alt="" />
 			<br />
 			<br />
 			<p>Standard variant (default)</p>

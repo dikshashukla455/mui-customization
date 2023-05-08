@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Button,Popper, Stack, Paper, ClickAwayListener,MenuList, MenuItem, Grow} from "@mui/material";
+import MenuImg from "../images/menu.png"
 function MenuLists() {
     const [MenuOpen, setMenuOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -51,6 +52,8 @@ function MenuLists() {
 				</ul>
 				using style overrides(MuiMenu and MuiMenuItem) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={MenuImg} width="600px" alt="" />
 			<br />
 			<br />
 			<Stack direction="row" spacing={2}>

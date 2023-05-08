@@ -16,7 +16,7 @@ function Overview(props) {
 	// implementation of the responsive sidebar
 	return (
 		<div>
-			<MuiNavBar />
+			{/* <MuiNavBar /> */}
 			<Box sx={{ display: "flex" }}>
 				<MuiSideBar />
 				<Box

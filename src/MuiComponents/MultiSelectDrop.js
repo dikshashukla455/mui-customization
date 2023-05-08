@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography,Autocomplete, Stack, TextField , Chip} from "@mui/material";
+import MultiDropImg from "../images/multidrop.png"
 function MultiSelectDrop() {
     const top100Films = [
 		{ title: "The Shawshank Redemption", year: 1994 },
@@ -45,7 +46,7 @@ function MultiSelectDrop() {
 				using style overrides(MuiCircularProgress) for the custom variants.
 			</Typography>
 			<br /> <br />
-			<img src="" width="600px" alt="" />
+			<img src={MultiDropImg} width="600px" alt="" />
 			<br></br>
 			<br />
 			<Stack spacing={3} sx={{ width: 500 }}>

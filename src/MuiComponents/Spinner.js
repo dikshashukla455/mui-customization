@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, CircularProgress } from "@mui/material";
+import SpinnerImg from "../images/spinner.png";
 function Spinner() {
 	return (
 		<div>
@@ -24,7 +25,7 @@ function Spinner() {
 				<br /> There is a disabled attribute to disable the switch.
 			</Typography>
 			<br /> <br />
-			<img src="" width="600px" alt="" />
+			<img src={SpinnerImg} width="600px" alt="" />
 			<br></br>
 			<br />
 			<CircularProgress color="primary" size="md" value={40} />

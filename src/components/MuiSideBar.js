@@ -14,6 +14,7 @@ import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { Link } from "react-router-dom";
+import { itemsList } from "../utils/componentsList";
 const drawerWidth = 240;
 function MuiSideBar(props) {
 	const { window } = props;
@@ -22,61 +23,12 @@ function MuiSideBar(props) {
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
-	const itemsList = [
-		{
-			text: "Colors",
-			to: "/color",
-		},
-		{
-			text: "Typography",
-			to: "/heading",
-		},
-		{
-			text: "Button",
-			to: "/button",
-		},
-		{
-			text: "Text Fields",
-			to: "/textfield",
-		},
-		{
-			text: "Checkbox and Radios",
-			to: "/inputbutton",
-		},
-		{
-			text: "Dropdown menu",
-			to: "/dropdown",
-		},
-		{
-			text: "Dialog Box",
-			to: "/dialog",
-		},
-		{
-			text: "Tabs",
-			to: "/tab",
-		},
-		{
-			text: "Accordion",
-			to: "/accordion",
-		},
-		{
-			text: "Tooltips",
-			to: "/tooltip",
-		},
-		{
-			text: "Switch",
-			to: "/switch",
-		},
-	];
-
+	
 	const drawer = (
 		<div>
 			<Divider />
 			{/*** Nav links on sidebar (beginner and advanced) */}
 			<List>
-				<Typography variant="h6" ml={2}>
-					Beginner
-				</Typography>
 				{itemsList.map((item) => (
 					<ListItem key={item.text} disablePadding>
 						<ListItemButton>
@@ -86,34 +38,6 @@ function MuiSideBar(props) {
 							<Link to={item.to} style={{ textDecoration: "none", color:"black" }}>
 								<ListItemText primary={item.text} />
 							</Link>
-						</ListItemButton>
-					</ListItem>
-				))}
-			</List>
-			<Divider />
-			<List>
-				<Typography variant="h6" ml={2}>
-					Advanced
-				</Typography>
-				{[
-					"Multi select Dropdown",
-					"Ratings",
-					"Alerts",
-					"Pagination",
-					"MenuLists",
-					"Tables",
-					"Breadcrumbs",
-					"Carousel",
-					"Snackbar",
-					"Stepper",
-					"Testimonials",
-				].map((text, index) => (
-					<ListItem key={text} disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								<ArrowCircleRightIcon />
-							</ListItemIcon>
-							<ListItemText primary={text} />
 						</ListItemButton>
 					</ListItem>
 				))}

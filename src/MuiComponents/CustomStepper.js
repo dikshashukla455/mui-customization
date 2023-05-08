@@ -13,6 +13,7 @@ import { Typography, Box, Button, StepButton } from "@mui/material";
 import StepConnector, {
 	stepConnectorClasses,
 } from "@mui/material/StepConnector";
+import StepperImg from "../images/stepper.png"
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
 	[`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -93,14 +94,12 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
 	},
 	[`&.${stepConnectorClasses.active}`]: {
 		[`& .${stepConnectorClasses.line}`]: {
-			backgroundColor:
-				"blueviolet",
+			backgroundColor: "blueviolet",
 		},
 	},
 	[`&.${stepConnectorClasses.completed}`]: {
 		[`& .${stepConnectorClasses.line}`]: {
-			backgroundColor:
-				"blueviolet",
+			backgroundColor: "blueviolet",
 		},
 	},
 	[`& .${stepConnectorClasses.line}`]: {
@@ -124,10 +123,10 @@ const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
 	justifyContent: "center",
 	alignItems: "center",
 	...(ownerState.active && {
-		backgroundColor:"blueviolet"
+		backgroundColor: "blueviolet",
 	}),
 	...(ownerState.completed && {
-		backgroundColor:"blueviolet"
+		backgroundColor: "blueviolet",
 	}),
 }));
 
@@ -176,32 +175,47 @@ const steps = [
 
 export function CustomizedSteppers() {
 	return (
-        <Box>
-        <Box>
-        <Typography variant="h6" mt={5}>Customized Static Stepper</Typography>
-        </Box>
-		<Stack sx={{ width: "100%" }} spacing={4}>
-        <br />
-			<Stepper alternativeLabel activeStep={1} connector={<QontoConnector />}>
-				{steps.map((label) => (
-					<Step key={label}>
-						<StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
-					</Step>
-				))}
-			</Stepper>
-			<Stepper
-				alternativeLabel
-				activeStep={1}
-				connector={<ColorlibConnector />}
-			>
-				{steps.map((label) => (
-					<Step key={label}>
-						<StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-					</Step>
-				))}
-			</Stepper>
-		</Stack>
-        </Box>
+		<Box>
+		<Typography variant="h3" mb={2} mt={3}>
+				Stepper
+			</Typography>
+			<Typography variant="bodyMedium">
+				The stepper can be customizable based on using style overrides
+				<br />
+				(MuiStepper) for the custom variants.
+			</Typography>
+			<Box>
+				<Typography variant="h6" mt={5}>
+					Customized Static Stepper
+				</Typography>
+			</Box>
+			<br/><br/>
+			<img src={StepperImg} width="600px" alt="" />
+			<br/><br/>
+			<Stack sx={{ width: "100%" }} spacing={4}>
+				<br />
+				<Stepper alternativeLabel activeStep={1} connector={<QontoConnector />}>
+					{steps.map((label) => (
+						<Step key={label}>
+							<StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
+						</Step>
+					))}
+				</Stepper>
+				<Stepper
+					alternativeLabel
+					activeStep={1}
+					connector={<ColorlibConnector />}
+				>
+					{steps.map((label) => (
+						<Step key={label}>
+							<StepLabel StepIconComponent={ColorlibStepIcon}>
+								{label}
+							</StepLabel>
+						</Step>
+					))}
+				</Stepper>
+			</Stack>
+		</Box>
 	);
 }
 const steppers = [
@@ -209,9 +223,8 @@ const steppers = [
 	"Create an ad group",
 	"Create an ad",
 ];
-<br />
+<br />;
 export function StandardStepper() {
-	
 	const [activeStep, setActiveStep] = React.useState(0);
 	const [completed, setCompleted] = React.useState({});
 
@@ -261,78 +274,72 @@ export function StandardStepper() {
 		setCompleted({});
 	};
 	return (
-        <Box>
-		<Typography variant="h3" mb={2} mt={3}>
-						Stepper
-					</Typography>
-					<Typography variant="bodyMedium">
-						The stepper can be customizable based on using style overrides
-						<br />
-						(MuiStepper) for the custom variants.
-					</Typography>
-        <Box>
-        <Typography variant="h6" mt={5}>Standard Stepper</Typography>
-        </Box>
-		<Box sx={{ width: "70%", marginX:"auto" }}>
-        <br />
-			<Stepper nonLinear activeStep={activeStep}>
-				{steps.map((label, index) => (
-					<Step key={label} completed={completed[index]}>
-						<StepButton color="inherit" onClick={handleStep(index)}>
-							{label}
-						</StepButton>
-					</Step>
-				))}
-			</Stepper>
-			<div>
-				{allStepsCompleted() ? (
-					<React.Fragment>
-						<Typography sx={{ mt: 2, mb: 1 }}>
-							All steps completed - you&apos;re finished
-						</Typography>
-						<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-							<Box sx={{ flex: "1 1 auto" }} />
-							<Button onClick={handleReset}>Reset</Button>
-						</Box>
-					</React.Fragment>
-				) : (
-					<React.Fragment>
-						<Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-							Step {activeStep + 1}
-						</Typography>
-						<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-							<Button
-								color="inherit"
-								disabled={activeStep === 0}
-								onClick={handleBack}
-								sx={{ mr: 1 }}
-							>
-								Back
-							</Button>
-							<Box sx={{ flex: "1 1 auto" }} />
-							<Button onClick={handleNext} sx={{ mr: 1 }}>
-								Next
-							</Button>
-							{activeStep !== steps.length &&
-								(completed[activeStep] ? (
-									<Typography
-										variant="caption"
-										sx={{ display: "inline-block" }}
-									>
-										Step {activeStep + 1} already completed
-									</Typography>
-								) : (
-									<Button onClick={handleComplete}>
-										{completedSteps() === totalSteps() - 1
-											? "Finish"
-											: "Complete Step"}
-									</Button>
-								))}
-						</Box>
-					</React.Fragment>
-				)}
-			</div>
+		<Box>
+			<Box>
+				<Typography variant="h6" mt={5}>
+					Standard Stepper
+				</Typography>
+			</Box>
+			<Box sx={{ width: "70%", marginX: "auto" }}>
+				<br />
+				<Stepper nonLinear activeStep={activeStep}>
+					{steps.map((label, index) => (
+						<Step key={label} completed={completed[index]}>
+							<StepButton color="inherit" onClick={handleStep(index)}>
+								{label}
+							</StepButton>
+						</Step>
+					))}
+				</Stepper>
+				<div>
+					{allStepsCompleted() ? (
+						<React.Fragment>
+							<Typography sx={{ mt: 2, mb: 1 }}>
+								All steps completed - you&apos;re finished
+							</Typography>
+							<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+								<Box sx={{ flex: "1 1 auto" }} />
+								<Button onClick={handleReset}>Reset</Button>
+							</Box>
+						</React.Fragment>
+					) : (
+						<React.Fragment>
+							<Typography sx={{ mt: 2, mb: 1, py: 1 }}>
+								Step {activeStep + 1}
+							</Typography>
+							<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+								<Button
+									color="inherit"
+									disabled={activeStep === 0}
+									onClick={handleBack}
+									sx={{ mr: 1 }}
+								>
+									Back
+								</Button>
+								<Box sx={{ flex: "1 1 auto" }} />
+								<Button onClick={handleNext} sx={{ mr: 1 }}>
+									Next
+								</Button>
+								{activeStep !== steps.length &&
+									(completed[activeStep] ? (
+										<Typography
+											variant="caption"
+											sx={{ display: "inline-block" }}
+										>
+											Step {activeStep + 1} already completed
+										</Typography>
+									) : (
+										<Button onClick={handleComplete}>
+											{completedSteps() === totalSteps() - 1
+												? "Finish"
+												: "Complete Step"}
+										</Button>
+									))}
+							</Box>
+						</React.Fragment>
+					)}
+				</div>
+			</Box>
 		</Box>
-        </Box>
 	);
 }

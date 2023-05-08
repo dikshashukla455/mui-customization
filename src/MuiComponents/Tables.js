@@ -10,6 +10,7 @@ import {
     Paper
 } from "@mui/material";
 import { StyledTableCell, StyledTableRow } from "../Theme";
+import TableImg from "../images/table.png"
 function Tables() {
 	function createData(name, calories, fat, carbs, protein) {
 		return { name, calories, fat, carbs, protein };
@@ -38,6 +39,8 @@ function Tables() {
 				</ul>
 				using style overrides(MuiTable) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={TableImg} width="600px" alt="" />
 			<br />
 			<br />
 			<p>Standard Table</p>

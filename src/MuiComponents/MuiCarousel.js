@@ -13,6 +13,7 @@ import {
 	Button,
 	Box,
 } from "@mui/material";
+import CarouselImg from "../images/carousel.png"
 function MuiCarousel() {
 	const theme = useTheme();
 	const images = [
@@ -63,6 +64,8 @@ function MuiCarousel() {
 				<br />
 				(MuiMobileStepper) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={CarouselImg} width="600px" alt="" />
 			<br />
 			<br />
 			<Box sx={{ maxWidth: 330, flexGrow: 1 }}>

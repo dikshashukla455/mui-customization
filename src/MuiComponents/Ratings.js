@@ -9,6 +9,7 @@ import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfi
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PropTypes from "prop-types";
+import RatingImg from "../images/rating.png"
 function Ratings() {
 	const [rating, setRating] = React.useState(3);
 	// different icons in rating section
@@ -67,8 +68,11 @@ function Ratings() {
 				</ul>
 				using style overrides(MuiRating) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={RatingImg} width="600px" alt="" />
 			<br />
 			<br />
+			
 			<Typography component="legend">Normal Rating with small size</Typography>
 			<Rating
 				name="simple-controlled"

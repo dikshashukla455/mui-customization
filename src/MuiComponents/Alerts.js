@@ -1,4 +1,5 @@
 import React from "react";
+import AlertImg from "../images/Alert.png"
 import { Typography, Alert, Box, AlertTitle } from "@mui/material";
 function Alerts() {
 	return (
@@ -25,6 +26,8 @@ function Alerts() {
 				</ul>
 				using style overrides(MuiAlert) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={AlertImg} width="600px" alt="" />
 			<br />
 			<br />
 			<Box sx={{ width: "400px" }}>

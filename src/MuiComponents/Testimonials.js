@@ -6,6 +6,7 @@ import { useTheme } from "@mui/material/styles";
 import SwipeableViews from "react-swipeable-views";
 import { Typography, CardContent, Card, Button, Box } from "@mui/material";
 import { autoPlay } from "react-swipeable-views-utils";
+import TestimonialImg from "../images/testimonial.png"
 function Testimonials() {
     const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 	const testimonial = [
@@ -53,6 +54,8 @@ function Testimonials() {
 				<br />
 				(MuiStepper) for the custom variants.
 			</Typography>
+			<br /> <br />
+			<img src={TestimonialImg} width="600px" alt="" />
 			<br />
 			<br />
 			<Box sx={{ maxWidth: 400, flexGrow: 1, boxShadow: 2 }}>
